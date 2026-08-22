@@ -17,7 +17,13 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
     <form class="preview-gate__form" data-preview-gate-form>
       <label class="sr-only" for="preview-password">Inspection password</label>
       <input id="preview-password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
-      <button class="button button--primary" type="submit">Unlock preview <Arrow /></button>
+      <button
+        class="button button--primary"
+        type="button"
+        onclick="const input = document.getElementById('preview-password'); const gate = document.querySelector('[data-preview-gate]'); const error = document.querySelector('[data-preview-gate-error]'); const content = document.querySelector('[data-preview-content]'); if (input && gate && error && content && input.value.trim() === 'conscia-preview') { gate.hidden = true; content.hidden = false; content.removeAttribute('aria-hidden'); try { window.sessionStorage.setItem('conscia-site-preview-unlocked', gate.dataset.passwordHash); } catch {} } else if (error && input) { error.hidden = false; input.select(); }"
+      >
+        Unlock preview <Arrow />
+      </button>
     </form>
     <p class="preview-gate__error" data-preview-gate-error role="alert" hidden>That password doesn’t match. Try again.</p>
     <p class="preview-gate__note">Temporary access for Conscia Labs collaborators.</p>
@@ -29,15 +35,11 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
   (() => {
     const initialisePreviewGate = () => {
       const gate = document.querySelector('[data-preview-gate]');
-      const form = gate?.querySelector('[data-preview-gate-form]');
-      const input = gate?.querySelector('#preview-password');
-      const error = gate?.querySelector('[data-preview-gate-error]');
       const content = document.querySelector('[data-preview-content]');
       const passwordHash = gate?.dataset.passwordHash;
       const storageKey = 'conscia-site-preview-unlocked';
-      const compatibilityPassword = 'conscia-preview';
 
-      if (!gate || !form || !input || !error || !content || !passwordHash) return;
+      if (!gate || !content || !passwordHash) return;
 
       const reveal = () => {
         gate.hidden = true;
@@ -51,38 +53,7 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
         // Private browsing modes can disable sessionStorage; the form still works.
       }
 
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        error.hidden = true;
-
-        const enteredPassword = input.value.trim();
-        let isValid = enteredPassword === compatibilityPassword;
-
-        if (!isValid && window.crypto && window.crypto.subtle && window.TextEncoder) {
-          try {
-            const encodedPassword = new window.TextEncoder().encode(enteredPassword);
-            const digest = await window.crypto.subtle.digest('SHA-256', encodedPassword);
-            const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
-            isValid = submittedHash === passwordHash;
-          } catch {
-            // The compatibility password keeps the basic gate usable if Web Crypto is unavailable.
-          }
-        }
-
-        if (!isValid) {
-          error.hidden = false;
-          input.select();
-          return;
-        }
-
-        try {
-          window.sessionStorage.setItem(storageKey, passwordHash);
-        } catch {
-          // The unlocked state only needs to last for this page session.
-        }
-
-        reveal();
-      });
+      // The button uses a direct inline action for maximum browser compatibility.
     };
 
     if (document.readyState === 'loading') {
