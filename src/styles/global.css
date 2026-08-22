@@ -57,6 +57,7 @@ a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 5px; 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .section-dark { background: var(--ink); color: var(--text-on-dark); }
 .section-light { background: var(--paper); color: var(--text); }
+.preview-gate[hidden], [data-preview-content][hidden] { display: none !important; }
 
 .preview-gate {
   display: grid;

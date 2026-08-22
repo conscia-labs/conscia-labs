@@ -36,9 +36,48 @@ const previewPasswordHash = '4bd6943e0f78937678b116a6ec5e90e404fc24c6be1194d0e6c
     <meta property="og:description" content={description} />
   </head>
   <body>
+    <PreviewGate passwordHash={previewPasswordHash} />
     <div data-preview-content hidden aria-hidden="true">
       <slot />
     </div>
-    <PreviewGate passwordHash={previewPasswordHash} />
+    <script is:inline>
+      (() => {
+        const initialisePreviewGate = () => {
+          const gate = document.querySelector('[data-preview-gate]');
+          const content = document.querySelector('[data-preview-content]');
+          const passwordHash = gate?.dataset.passwordHash;
+          const storageKey = 'conscia-site-preview-unlocked';
+          const compatibilityPassword = 'conscia-preview';
+          const submittedPassword = new URLSearchParams(window.location.search).get('unlock');
+
+          if (!gate || !content || !passwordHash) return;
+
+          const reveal = () => {
+            gate.hidden = true;
+            content.hidden = false;
+            content.removeAttribute('aria-hidden');
+          };
+
+          try {
+            if (window.sessionStorage.getItem(storageKey) === passwordHash || submittedPassword === compatibilityPassword) {
+              reveal();
+              if (submittedPassword) window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+            } else if (submittedPassword) {
+              const error = document.querySelector('[data-preview-gate-error]');
+              if (error) error.hidden = false;
+              window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+            }
+          } catch {
+            // Private browsing modes can disable sessionStorage; the form still works.
+          }
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initialisePreviewGate, { once: true });
+        } else {
+          initialisePreviewGate();
+        }
+      })();
+    </script>
   </body>
 </html>
