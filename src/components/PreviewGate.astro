@@ -25,62 +25,70 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
   </div>
 </section>
 
-<script>
-  const gate = document.querySelector<HTMLElement>('[data-preview-gate]');
-  const form = gate?.querySelector<HTMLFormElement>('[data-preview-gate-form]');
-  const input = gate?.querySelector<HTMLInputElement>('#preview-password');
-  const error = gate?.querySelector<HTMLElement>('[data-preview-gate-error]');
-  const content = document.querySelector<HTMLElement>('[data-preview-content]');
-  const passwordHash = gate?.dataset.passwordHash;
-  const storageKey = 'conscia-site-preview-unlocked';
-  const compatibilityPassword = 'conscia-preview';
+<script is:inline>
+  (() => {
+    const initialisePreviewGate = () => {
+      const gate = document.querySelector('[data-preview-gate]');
+      const form = gate?.querySelector('[data-preview-gate-form]');
+      const input = gate?.querySelector('#preview-password');
+      const error = gate?.querySelector('[data-preview-gate-error]');
+      const content = document.querySelector('[data-preview-content]');
+      const passwordHash = gate?.dataset.passwordHash;
+      const storageKey = 'conscia-site-preview-unlocked';
+      const compatibilityPassword = 'conscia-preview';
 
-  if (gate && form && input && error && content && passwordHash) {
-    const reveal = () => {
-      gate.hidden = true;
-      content.hidden = false;
-      content.removeAttribute('aria-hidden');
-    };
+      if (!gate || !form || !input || !error || !content || !passwordHash) return;
 
-    try {
-      if (window.sessionStorage.getItem(storageKey) === passwordHash) {
-        reveal();
-      }
-    } catch {
-      // Private browsing modes can disable sessionStorage; the form still works.
-    }
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      error.hidden = true;
-
-      const enteredPassword = input.value.trim();
-      let isValid = enteredPassword === compatibilityPassword;
-
-      if (!isValid && globalThis.crypto?.subtle && globalThis.TextEncoder) {
-        try {
-          const encodedPassword = new TextEncoder().encode(enteredPassword);
-          const digest = await crypto.subtle.digest('SHA-256', encodedPassword);
-          const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
-          isValid = submittedHash === passwordHash;
-        } catch {
-          // The compatibility password above keeps the basic gate usable if Web Crypto is unavailable.
-        }
-      }
-
-      if (!isValid) {
-        error.hidden = false;
-        input.select();
-        return;
-      }
+      const reveal = () => {
+        gate.hidden = true;
+        content.hidden = false;
+        content.removeAttribute('aria-hidden');
+      };
 
       try {
-        window.sessionStorage.setItem(storageKey, passwordHash);
+        if (window.sessionStorage.getItem(storageKey) === passwordHash) reveal();
       } catch {
-        // The unlocked state only needs to last for this page session.
+        // Private browsing modes can disable sessionStorage; the form still works.
       }
 
-      reveal();
-    });
-  }
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        error.hidden = true;
+
+        const enteredPassword = input.value.trim();
+        let isValid = enteredPassword === compatibilityPassword;
+
+        if (!isValid && window.crypto && window.crypto.subtle && window.TextEncoder) {
+          try {
+            const encodedPassword = new window.TextEncoder().encode(enteredPassword);
+            const digest = await window.crypto.subtle.digest('SHA-256', encodedPassword);
+            const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+            isValid = submittedHash === passwordHash;
+          } catch {
+            // The compatibility password keeps the basic gate usable if Web Crypto is unavailable.
+          }
+        }
+
+        if (!isValid) {
+          error.hidden = false;
+          input.select();
+          return;
+        }
+
+        try {
+          window.sessionStorage.setItem(storageKey, passwordHash);
+        } catch {
+          // The unlocked state only needs to last for this page session.
+        }
+
+        reveal();
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initialisePreviewGate, { once: true });
+    } else {
+      initialisePreviewGate();
+    }
+  })();
 </script>
