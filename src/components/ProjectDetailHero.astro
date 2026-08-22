@@ -8,10 +8,11 @@ interface Props {
   category: string;
   type: string;
   description: string;
+  status?: string;
   externalHref: string;
 }
 
-const { name, category, type, description, externalHref } = Astro.props;
+const { name, category, type, description, status, externalHref } = Astro.props;
 ---
 
 <div class="project-detail-shell">
@@ -25,6 +26,7 @@ const { name, category, type, description, externalHref } = Astro.props;
           <h1 id="project-title">{name}</h1>
           <p class="project-detail-hero__lede">Enterprise inferencing, governed from the first request.</p>
           <p class="project-detail-hero__description">{description}</p>
+          {status && <p class="project-detail-hero__status"><span>Closed beta</span>{status}</p>}
           <div class="project-detail-hero__actions">
             <a class="button button--primary" href={externalHref} target="_blank" rel="noreferrer">Open AI Gateway <Arrow /></a>
             <a class="inline-link inline-link--light" href="#capabilities">Explore capabilities <Arrow /></a>

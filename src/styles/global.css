@@ -187,6 +187,26 @@ a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 5px; 
   line-height: 1.7;
 }
 
+.project-detail-hero__status {
+  max-width: 36rem;
+  margin: 1.35rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent-bright);
+  color: var(--text-on-dark-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.project-detail-hero__status span {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--accent-secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .project-detail-hero__actions {
   display: flex;
   flex-wrap: wrap;
