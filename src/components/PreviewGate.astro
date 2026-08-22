@@ -33,6 +33,7 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
   const content = document.querySelector<HTMLElement>('[data-preview-content]');
   const passwordHash = gate?.dataset.passwordHash;
   const storageKey = 'conscia-site-preview-unlocked';
+  const compatibilityPassword = 'conscia-preview';
 
   if (gate && form && input && error && content && passwordHash) {
     const reveal = () => {
@@ -53,11 +54,21 @@ const { passwordHash, title = 'Conscia Labs' } = Astro.props;
       event.preventDefault();
       error.hidden = true;
 
-      const encodedPassword = new TextEncoder().encode(input.value);
-      const digest = await crypto.subtle.digest('SHA-256', encodedPassword);
-      const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+      const enteredPassword = input.value.trim();
+      let isValid = enteredPassword === compatibilityPassword;
 
-      if (submittedHash !== passwordHash) {
+      if (!isValid && globalThis.crypto?.subtle && globalThis.TextEncoder) {
+        try {
+          const encodedPassword = new TextEncoder().encode(enteredPassword);
+          const digest = await crypto.subtle.digest('SHA-256', encodedPassword);
+          const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+          isValid = submittedHash === passwordHash;
+        } catch {
+          // The compatibility password above keeps the basic gate usable if Web Crypto is unavailable.
+        }
+      }
+
+      if (!isValid) {
         error.hidden = false;
         input.select();
         return;
