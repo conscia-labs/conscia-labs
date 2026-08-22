@@ -1,0 +1,75 @@
+---
+import Arrow from './Arrow.astro';
+
+interface Props {
+  passwordHash: string;
+  title?: string;
+}
+
+const { passwordHash, title = 'Conscia Labs' } = Astro.props;
+---
+
+<section class="preview-gate" data-preview-gate data-password-hash={passwordHash} aria-labelledby="preview-gate-title">
+  <div class="preview-gate__panel">
+    <p class="section-label">Private preview</p>
+    <h1 id="preview-gate-title">{title}</h1>
+    <p class="preview-gate__intro">This page is being shared with invited reviewers. Enter the inspection password to continue.</p>
+    <form class="preview-gate__form" data-preview-gate-form>
+      <label class="sr-only" for="preview-password">Inspection password</label>
+      <input id="preview-password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
+      <button class="button button--primary" type="submit">Unlock preview <Arrow /></button>
+    </form>
+    <p class="preview-gate__error" data-preview-gate-error role="alert" hidden>That password doesn’t match. Try again.</p>
+    <p class="preview-gate__note">Temporary access for Conscia Labs collaborators.</p>
+    <a class="inline-link inline-link--light" href="/">Back to Conscia Labs <Arrow /></a>
+  </div>
+</section>
+
+<script>
+  const gate = document.querySelector<HTMLElement>('[data-preview-gate]');
+  const form = gate?.querySelector<HTMLFormElement>('[data-preview-gate-form]');
+  const input = gate?.querySelector<HTMLInputElement>('#preview-password');
+  const error = gate?.querySelector<HTMLElement>('[data-preview-gate-error]');
+  const content = document.querySelector<HTMLElement>('[data-preview-content]');
+  const passwordHash = gate?.dataset.passwordHash;
+  const storageKey = 'conscia-site-preview-unlocked';
+
+  if (gate && form && input && error && content && passwordHash) {
+    const reveal = () => {
+      gate.hidden = true;
+      content.hidden = false;
+      content.removeAttribute('aria-hidden');
+    };
+
+    try {
+      if (window.sessionStorage.getItem(storageKey) === passwordHash) {
+        reveal();
+      }
+    } catch {
+      // Private browsing modes can disable sessionStorage; the form still works.
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+
+      const encodedPassword = new TextEncoder().encode(input.value);
+      const digest = await crypto.subtle.digest('SHA-256', encodedPassword);
+      const submittedHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+
+      if (submittedHash !== passwordHash) {
+        error.hidden = false;
+        input.select();
+        return;
+      }
+
+      try {
+        window.sessionStorage.setItem(storageKey, passwordHash);
+      } catch {
+        // The unlocked state only needs to last for this page session.
+      }
+
+      reveal();
+    });
+  }
+</script>

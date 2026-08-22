@@ -1,0 +1,23 @@
+---
+const principles = [
+  { number: '01', name: 'Explore', description: 'Investigate emerging ideas and find the questions worth answering.' },
+  { number: '02', name: 'Build', description: 'Turn promising thinking into prototypes, systems, and tools.' },
+  { number: '03', name: 'Collaborate', description: 'Work with the people closest to the problem and the outcome.' },
+  { number: '04', name: 'Deliver', description: 'Ship what proves useful, dependable, and ready for real work.' },
+];
+---
+
+<section class="principles" aria-labelledby="principles-title">
+  <div class="container">
+    <h2 class="sr-only" id="principles-title">How Conscia Labs works</h2>
+    <div class="principles__grid">
+      {principles.map((principle) => (
+        <article class="principle">
+          <span class="principle__number">{principle.number}</span>
+          <h3>{principle.name}</h3>
+          <p>{principle.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

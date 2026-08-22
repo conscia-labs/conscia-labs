@@ -1,0 +1,20 @@
+---
+import AbstractNetwork from './AbstractNetwork.astro';
+import Arrow from './Arrow.astro';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <h1 id="hero-title">Conscia<br /><span>Labs</span></h1>
+      <div class="hero__rule" aria-hidden="true"></div>
+      <p class="hero__statement">Engineering the future.<br />Solving real problems.<br /><span>Building what’s next.</span></p>
+      <p class="hero__description">Conscia Labs explores, builds, and validates emerging technology across AI, networking, security, automation, and adjacent fields.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#projects">Explore projects <Arrow /></a>
+        <a class="inline-link inline-link--light" href="#about">About Labs <Arrow /></a>
+      </div>
+    </div>
+    <AbstractNetwork />
+  </div>
+</section>

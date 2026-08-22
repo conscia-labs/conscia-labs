@@ -1,0 +1,35 @@
+---
+import type { GatewayItem } from '../data/ai-gateway';
+
+interface Props {
+  items: GatewayItem[];
+  id?: string;
+  dark?: boolean;
+}
+
+const { items, id = 'capabilities', dark = true } = Astro.props;
+---
+
+<section class:list={['capability-section', { 'section-dark': dark, 'section-light': !dark }]} id={id} aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <div class="section-intro section-intro--dark capability-section__intro">
+      <div>
+        <p class="section-label">02 / Capabilities</p>
+        <h2 id={`${id}-title`}>The gateway between possibility and practice.</h2>
+      </div>
+      <p>AI Gateway brings model access, organizational control, and a clear path to first value into one platform.</p>
+    </div>
+    <div class="capability-grid">
+      {items.map((item) => (
+        <article class="capability-card" style={`--item-accent: ${item.accent}`}>
+          <div class="capability-card__top">
+            <span class="capability-card__number">{item.number}</span>
+            <span class="capability-card__signal" aria-hidden="true"></span>
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

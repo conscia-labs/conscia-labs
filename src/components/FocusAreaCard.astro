@@ -1,0 +1,19 @@
+---
+import type { FocusArea } from '../data/focus-areas';
+
+interface Props {
+  area: FocusArea;
+}
+
+const { area } = Astro.props;
+---
+
+<article class="focus-card" style={`--area-accent: ${area.accent}`}>
+  <div class="focus-card__top">
+    <span class="focus-card__number">{area.number}</span>
+    <span class="focus-card__line" aria-hidden="true"></span>
+    <span class="focus-card__signal" aria-hidden="true"></span>
+  </div>
+  <h3>{area.name}</h3>
+  <p>{area.description}</p>
+</article>

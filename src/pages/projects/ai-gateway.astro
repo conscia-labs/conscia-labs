@@ -1,0 +1,79 @@
+---
+import CapabilityGrid from '../../components/CapabilityGrid.astro';
+import Footer from '../../components/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
+import ProjectDetailCTA from '../../components/ProjectDetailCTA.astro';
+import ProjectDetailHero from '../../components/ProjectDetailHero.astro';
+import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-gateway';
+---
+
+<Layout
+  title="AI Gateway — Conscia Labs"
+  description="AI Gateway is Conscia’s enterprise inferencing gateway with embedded security, multi-tenant model access, governance, usage controls, and guided self-service."
+  noIndex
+>
+  <div class="project-page">
+    <ProjectDetailHero
+      name="AI Gateway"
+      category="Artificial Intelligence"
+      type="Platform"
+      description="An enterprise inferencing gateway with embedded security functionality. AI Gateway gives organizations governed access to models from AWS Bedrock, OpenAI, Anthropic, Google, and Conscia’s own model portfolio."
+      externalHref="https://console.ai.conscialabs.com"
+    />
+
+    <section class="detail-overview section-light" aria-labelledby="overview-title">
+      <div class="container detail-overview__grid">
+        <div>
+          <p class="section-label">01 / What it is</p>
+          <h2 id="overview-title">A secure front door for organizational AI.</h2>
+        </div>
+        <div class="detail-overview__copy">
+          <p>AI Gateway is the platform layer between your organization and the models it wants to use. It gives people a practical way to experiment and build while keeping access, usage, and accountability visible to the organization.</p>
+          <p>That means teams can move from “can we try this?” to a working, governed model request without every experiment becoming a new security or integration project.</p>
+        </div>
+      </div>
+    </section>
+
+    <CapabilityGrid items={aiGatewayCapabilities} />
+
+    <section class="differentiators section-light" aria-labelledby="differentiators-title">
+      <div class="container">
+        <div class="section-intro section-intro--light">
+          <div>
+            <p class="section-label">03 / Why it’s unique</p>
+            <h2 id="differentiators-title">Governance that helps people move faster.</h2>
+          </div>
+          <p>AI Gateway is not only a model router. It is an organizational path for making AI available without losing the context needed to use it responsibly.</p>
+        </div>
+        <div class="differentiator-grid">
+          {aiGatewayDifferentiators.map((item) => (
+            <article class="differentiator" style={`--item-accent: ${item.accent}`}>
+              <span class="differentiator__number">{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="portal-preview section-dark" aria-labelledby="portal-title">
+      <div class="container">
+        <div class="portal-preview__intro">
+          <div>
+            <p class="section-label">Developer Portal</p>
+            <h2 id="portal-title">From credentials to a successful request.</h2>
+          </div>
+          <p>The Developer Portal puts setup, model availability, sandbox access, usage, alerts, limits, and quickstart guidance in one place.</p>
+        </div>
+        <figure class="portal-preview__figure">
+          <img src="/images/ai-gateway/developer-portal.png" alt="AI Gateway Developer Portal showing setup progress, available models, usage, and quickstart actions" loading="lazy" />
+          <figcaption>Developer Portal overview</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <ProjectDetailCTA externalHref="https://console.ai.conscialabs.com" />
+    <Footer />
+  </div>
+</Layout>

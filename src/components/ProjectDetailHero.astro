@@ -1,0 +1,40 @@
+---
+import Arrow from './Arrow.astro';
+import Header from './Header.astro';
+import ProjectVisual from './ProjectVisual.astro';
+
+interface Props {
+  name: string;
+  category: string;
+  type: string;
+  description: string;
+  externalHref: string;
+}
+
+const { name, category, type, description, externalHref } = Astro.props;
+---
+
+<div class="project-detail-shell">
+  <Header />
+  <section class="project-detail-hero" aria-labelledby="project-title">
+    <div class="container">
+      <a class="back-link" href="/#projects"><Arrow /> All projects</a>
+      <div class="project-detail-hero__grid">
+        <div class="project-detail-hero__copy">
+          <p class="project-detail-meta">{category} <span aria-hidden="true">/</span> {type}</p>
+          <h1 id="project-title">{name}</h1>
+          <p class="project-detail-hero__lede">Enterprise inferencing, governed from the first request.</p>
+          <p class="project-detail-hero__description">{description}</p>
+          <div class="project-detail-hero__actions">
+            <a class="button button--primary" href={externalHref} target="_blank" rel="noreferrer">Open AI Gateway <Arrow /></a>
+            <a class="inline-link inline-link--light" href="#capabilities">Explore capabilities <Arrow /></a>
+          </div>
+        </div>
+        <div class="project-detail-hero__media">
+          <ProjectVisual visual="gateway" />
+          <p class="project-detail-hero__media-label">A governed route to the models your organization can use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

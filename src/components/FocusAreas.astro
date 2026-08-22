@@ -1,0 +1,19 @@
+---
+import { focusAreas } from '../data/focus-areas';
+import FocusAreaCard from './FocusAreaCard.astro';
+---
+
+<section class="focus-areas section-dark" id="focus-areas" aria-labelledby="focus-title">
+  <div class="container">
+    <div class="section-intro section-intro--dark">
+      <div>
+        <p class="section-label">01 / Focus</p>
+        <h2 id="focus-title">Where we go deep.</h2>
+      </div>
+      <p>AI is one part of the picture. Labs is a place to explore the systems, infrastructure, and ideas that will shape what comes next.</p>
+    </div>
+    <div class="focus-grid">
+      {focusAreas.map((area) => <FocusAreaCard area={area} />)}
+    </div>
+  </div>
+</section>

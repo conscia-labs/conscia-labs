@@ -1,0 +1,41 @@
+---
+import type { ProjectVisual as ProjectVisualType } from '../data/projects';
+
+interface Props {
+  visual: ProjectVisualType;
+}
+
+const { visual } = Astro.props;
+---
+
+<div class:list={['project-visual', `project-visual--${visual}`]} aria-hidden="true">
+  {visual === 'gateway' && (
+    <>
+      <span class="project-visual__beam project-visual__beam--one"></span>
+      <span class="project-visual__beam project-visual__beam--two"></span>
+      <span class="project-visual__beam project-visual__beam--three"></span>
+      <span class="project-visual__node project-visual__node--one"></span>
+      <span class="project-visual__node project-visual__node--two"></span>
+      <span class="project-visual__node project-visual__node--three"></span>
+    </>
+  )}
+  {visual === 'beacon' && (
+    <>
+      <span class="project-visual__orbit project-visual__orbit--one"></span>
+      <span class="project-visual__orbit project-visual__orbit--two"></span>
+      <span class="project-visual__orbit project-visual__orbit--three"></span>
+      <span class="project-visual__beacon"></span>
+      <span class="project-visual__satellite project-visual__satellite--one"></span>
+      <span class="project-visual__satellite project-visual__satellite--two"></span>
+    </>
+  )}
+  {visual === 'ccode' && (
+    <>
+      <span class="project-visual__cube project-visual__cube--one"></span>
+      <span class="project-visual__cube project-visual__cube--two"></span>
+      <span class="project-visual__cube project-visual__cube--three"></span>
+      <span class="project-visual__code-line project-visual__code-line--one"></span>
+      <span class="project-visual__code-line project-visual__code-line--two"></span>
+    </>
+  )}
+</div>
