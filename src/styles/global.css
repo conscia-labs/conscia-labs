@@ -102,7 +102,7 @@ a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 5px; 
 .brand-mark__icon { width: 1.65rem; height: 1.65rem; color: var(--accent-secondary); }
 .brand-mark__name span { color: var(--accent-bright); }
 
-.site-nav { display: flex; align-items: center; gap: clamp(1rem, 2.8vw, 2.5rem); color: var(--text-on-dark-muted); font-size: 0.8rem; letter-spacing: 0.02em; }
+.site-nav { display: flex; align-items: center; gap: clamp(1rem, 2.8vw, 2.5rem); color: var(--text-on-dark-muted); font-size: 0.8rem; font-weight: 620; letter-spacing: 0.03em; }
 .site-nav a, .site-footer a { transition: color 180ms ease; }
 .site-nav a:hover, .site-footer a:hover { color: var(--accent-bright); }
 
