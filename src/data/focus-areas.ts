@@ -3,6 +3,7 @@ export type FocusArea = {
   name: string;
   description: string;
   accent: string;
+  href?: string;
 };
 
 export const focusAreas: FocusArea[] = [
@@ -11,6 +12,7 @@ export const focusAreas: FocusArea[] = [
     name: 'Artificial Intelligence',
     description: 'Building useful intelligence with the controls and context real teams need.',
     accent: '#aeb6ef',
+    href: '/focus-areas/artificial-intelligence',
   },
   {
     number: '02',

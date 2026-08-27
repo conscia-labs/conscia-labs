@@ -59,9 +59,16 @@ const previewPasswordHash = '4bd6943e0f78937678b116a6ec5e90e404fc24c6be1194d0e6c
           };
 
           try {
-            if (window.sessionStorage.getItem(storageKey) === passwordHash || submittedPassword === compatibilityPassword) {
+            if (submittedPassword === compatibilityPassword || window.sessionStorage.getItem(storageKey) === passwordHash) {
               reveal();
-              if (submittedPassword) window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+              if (submittedPassword) {
+                try {
+                  window.sessionStorage.setItem(storageKey, passwordHash);
+                } catch {
+                  // Private browsing modes can disable sessionStorage; the current page can still be viewed.
+                }
+                window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+              }
             } else if (submittedPassword) {
               const error = document.querySelector('[data-preview-gate-error]');
               if (error) error.hidden = false;

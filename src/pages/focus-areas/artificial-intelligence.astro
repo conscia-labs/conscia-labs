@@ -1,0 +1,148 @@
+---
+import Arrow from '../../components/Arrow.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Artificial Intelligence — Conscia Labs"
+  description="Conscia Labs explores agentic systems, interoperable AI protocols, and the enterprise security boundaries needed to make AI useful at work."
+  noIndex
+>
+  <div class="focus-detail-shell">
+    <Header />
+    <section class="focus-detail-hero" aria-labelledby="focus-detail-title">
+      <div class="container">
+        <a class="back-link" href="/#focus-areas"><Arrow /> All focus areas</a>
+        <div class="focus-detail-hero__grid">
+          <div class="focus-detail-hero__copy">
+            <p class="project-detail-meta">01 <span aria-hidden="true">/</span> Focus area</p>
+            <h1 id="focus-detail-title">Artificial Intelligence</h1>
+            <p class="focus-detail-hero__lede">Exploring systems that can act, collaborate, and still know where the boundaries are.</p>
+            <p class="focus-detail-hero__description">We are going deeper on agentic systems: how they reason, use tools, work with other agents, and operate over time. The question is not only what an agent can do, but how it can do useful work inside the boundaries an organization can understand and trust.</p>
+          </div>
+          <div class="agentic-map" aria-label="A conceptual map of an agentic system">
+            <div class="agentic-map__orbit agentic-map__orbit--outer"></div>
+            <div class="agentic-map__orbit agentic-map__orbit--inner"></div>
+            <div class="agentic-map__connection agentic-map__connection--one"></div>
+            <div class="agentic-map__connection agentic-map__connection--two"></div>
+            <div class="agentic-map__connection agentic-map__connection--three"></div>
+            <span class="agentic-map__node agentic-map__node--agent">AGENT</span>
+            <span class="agentic-map__node agentic-map__node--protocol">A2A</span>
+            <span class="agentic-map__node agentic-map__node--security">SECURITY</span>
+            <span class="agentic-map__node agentic-map__node--context">CONTEXT</span>
+            <span class="agentic-map__boundary">ENTERPRISE BOUNDARY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-detail-overview section-light" aria-labelledby="focus-question-title">
+      <div class="container focus-detail-overview__grid">
+        <div>
+          <p class="section-label">01 / The question</p>
+          <h2 id="focus-question-title">How can an agent act without leaving the system?</h2>
+        </div>
+        <div class="focus-detail-overview__copy">
+          <p>Agentic systems promise more than a single answer. They can plan a task, call tools, coordinate steps, and hand work to another system. That promise also introduces new questions about authority, identity, data, and accountability.</p>
+          <p>Our work is to understand those questions deeply enough to turn them into practical patterns for the enterprise: systems that are capable without becoming unbounded, and autonomous enough to help without becoming unaccountable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-detail-threads section-dark" aria-labelledby="threads-title">
+      <div class="container">
+        <div class="section-intro section-intro--dark">
+          <div>
+            <p class="section-label">02 / What we are exploring</p>
+            <h2 id="threads-title">The work between the prompt and the outcome.</h2>
+          </div>
+          <p>We are looking at the full system around an intelligent action: the agent, the protocols it uses, and the controls that keep its work inside the right context.</p>
+        </div>
+        <div class="focus-detail-thread-grid">
+          <article class="focus-detail-thread" style="--item-accent: var(--accent-bright)">
+            <span class="focus-detail-thread__number">01</span>
+            <h3>Agentic systems</h3>
+            <p>Understanding how agents plan, maintain context, use tools, recover from failure, and collaborate across a longer-running piece of work.</p>
+          </article>
+          <article class="focus-detail-thread" style="--item-accent: var(--accent-info)">
+            <span class="focus-detail-thread__number">02</span>
+            <h3>Protocols and coordination</h3>
+            <p>Exploring protocols such as A2A and initiatives such as Agntcy to understand how agents can discover, communicate, and delegate without losing clarity about who is responsible.</p>
+          </article>
+          <article class="focus-detail-thread" style="--item-accent: var(--accent-secondary)">
+            <span class="focus-detail-thread__number">03</span>
+            <h3>Enterprise security</h3>
+            <p>Working through identity, permissions, policy, observability, auditability, and safe tool access for agents operating in an organizational environment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-detail-boundaries section-light" aria-labelledby="boundaries-title">
+      <div class="container">
+        <div class="section-intro section-intro--light">
+          <div>
+            <p class="section-label">03 / Inside the boundary</p>
+            <h2 id="boundaries-title">Capability needs a context.</h2>
+          </div>
+          <p>The interesting challenge is not making an agent do everything. It is giving an agent enough room to do something valuable, with the boundaries visible before it acts.</p>
+        </div>
+        <div class="boundary-grid">
+          <article class="boundary-card">
+            <span class="boundary-card__marker">DEFINE</span>
+            <h3>Who can act?</h3>
+            <p>Map the agent to a person, team, service, or approved workflow so authority is explicit.</p>
+          </article>
+          <article class="boundary-card">
+            <span class="boundary-card__marker">OBSERVE</span>
+            <h3>What happened?</h3>
+            <p>Make decisions, tool calls, handoffs, and outcomes visible enough to inspect and learn from.</p>
+          </article>
+          <article class="boundary-card">
+            <span class="boundary-card__marker">CONTAIN</span>
+            <h3>What is the limit?</h3>
+            <p>Give systems clear constraints around data, tools, scope, and escalation when the situation changes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-detail-practice section-dark" aria-labelledby="practice-title">
+      <div class="container focus-detail-practice__grid">
+        <div>
+          <p class="section-label">04 / Our approach</p>
+          <h2 id="practice-title">Understand it. Test it. Make it useful.</h2>
+        </div>
+        <div class="focus-detail-practice__steps">
+          <div class="practice-step">
+            <span>01</span>
+            <p><strong>Understand</strong> the capabilities, protocols, and failure modes that shape agentic systems.</p>
+          </div>
+          <div class="practice-step">
+            <span>02</span>
+            <p><strong>Test</strong> ideas against the practical realities of enterprise security, governance, and operations.</p>
+          </div>
+          <div class="practice-step">
+            <span>03</span>
+            <p><strong>Make useful</strong> patterns tangible through prototypes, guidance, and products people can actually use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-detail-cta section-dark" aria-labelledby="ai-cta-title">
+      <div class="container focus-detail-cta__inner">
+        <div>
+          <p class="section-label">Related project</p>
+          <h2 id="ai-cta-title">Putting governed AI into practice.</h2>
+          <p>AI Gateway is one expression of this work: a secure, multi-tenant path to enterprise model access, now in closed beta.</p>
+        </div>
+        <a class="button button--outline" href="/projects/ai-gateway">Explore AI Gateway <Arrow /></a>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</Layout>

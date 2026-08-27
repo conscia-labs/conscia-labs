@@ -1,19 +1,34 @@
 ---
 import type { FocusArea } from '../data/focus-areas';
+import Arrow from './Arrow.astro';
 
 interface Props {
   area: FocusArea;
 }
 
 const { area } = Astro.props;
+const isLinked = Boolean(area.href);
 ---
 
-<article class="focus-card" style={`--area-accent: ${area.accent}`}>
-  <div class="focus-card__top">
-    <span class="focus-card__number">{area.number}</span>
-    <span class="focus-card__line" aria-hidden="true"></span>
-    <span class="focus-card__signal" aria-hidden="true"></span>
-  </div>
-  <h3>{area.name}</h3>
-  <p>{area.description}</p>
-</article>
+{isLinked ? (
+  <a class="focus-card focus-card--linked" style={`--area-accent: ${area.accent}`} href={area.href}>
+    <div class="focus-card__top">
+      <span class="focus-card__number">{area.number}</span>
+      <span class="focus-card__line" aria-hidden="true"></span>
+      <span class="focus-card__signal" aria-hidden="true"></span>
+    </div>
+    <h3>{area.name}</h3>
+    <p>{area.description}</p>
+    <span class="focus-card__link">Explore area <Arrow /></span>
+  </a>
+) : (
+  <article class="focus-card" style={`--area-accent: ${area.accent}`}>
+    <div class="focus-card__top">
+      <span class="focus-card__number">{area.number}</span>
+      <span class="focus-card__line" aria-hidden="true"></span>
+      <span class="focus-card__signal" aria-hidden="true"></span>
+    </div>
+    <h3>{area.name}</h3>
+    <p>{area.description}</p>
+  </article>
+)}
