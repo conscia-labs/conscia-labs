@@ -454,6 +454,8 @@ a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 5px; 
 .network-visual__lines .network-visual__lines--faint { stroke: rgb(124 134 223 / 20%); stroke-dasharray: 2 7; }
 .network-visual__nodes circle { fill: var(--ink); stroke: var(--accent-secondary); stroke-width: 1.4; }
 .network-visual__nodes circle:nth-child(3n) { fill: var(--accent-info); }
+.network-visual__nodes .network-visual__node--ai { fill: var(--accent-bright); }
+.network-visual__nodes .network-visual__node--cloud { fill: var(--accent-secondary); }
 .network-visual__rings circle { fill: none; stroke: rgb(163 214 207 / 33%); stroke-width: 1; }
 .network-visual__labels text { fill: rgb(239 241 244 / 75%); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9px; letter-spacing: 0.16em; }
 .network-visual__halo { position: absolute; z-index: -1; border: 1px solid rgb(89 101 204 / 24%); border-radius: 50%; }
