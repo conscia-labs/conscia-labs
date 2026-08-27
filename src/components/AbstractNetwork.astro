@@ -1,72 +1,70 @@
 ---
+const nodes = [
+  { id: 'ai', x: 145, y: 92, r: 6, kind: 'network-visual__node--hub network-visual__node--ai', ring: 17, labels: [{ text: 'AI', x: 118, y: 68 }] },
+  { id: 'systems', x: 98, y: 190, r: 7, kind: 'network-visual__node--hub', ring: 20, labels: [{ text: 'SYSTEMS', x: 64, y: 160 }, { text: 'ENGINEERING', x: 64, y: 175 }] },
+  { id: 'security', x: 145, y: 340, r: 6, kind: 'network-visual__node--hub', ring: 16, labels: [{ text: 'SECURITY', x: 82, y: 365 }] },
+  { id: 'platforms', x: 315, y: 250, r: 8, kind: 'network-visual__node--hub', ring: 22, labels: [{ text: 'PLATFORMS', x: 315, y: 220, anchor: 'middle' }] },
+  { id: 'reliability', x: 390, y: 425, r: 7, kind: 'network-visual__node--hub', ring: 19, labels: [{ text: 'RELIABILITY', x: 390, y: 470, anchor: 'middle' }] },
+  { id: 'distributed', x: 485, y: 108, r: 7, kind: 'network-visual__node--hub', ring: 20, labels: [{ text: 'DISTRIBUTED', x: 454, y: 80 }, { text: 'SYSTEMS', x: 454, y: 95 }] },
+  { id: 'networks', x: 565, y: 220, r: 6, kind: 'network-visual__node--hub', ring: 17, labels: [{ text: 'NETWORKS', x: 527, y: 205 }] },
+  { id: 'cloud', x: 570, y: 365, r: 7, kind: 'network-visual__node--hub network-visual__node--cloud', ring: 19, labels: [{ text: 'CLOUD', x: 570, y: 398, anchor: 'middle' }] },
+  { id: 'relay-top', x: 235, y: 130, r: 5, kind: 'network-visual__node--relay' },
+  { id: 'relay-core', x: 410, y: 170, r: 5, kind: 'network-visual__node--relay' },
+  { id: 'relay-south', x: 275, y: 390, r: 5, kind: 'network-visual__node--relay' },
+  { id: 'relay-east', x: 500, y: 305, r: 5, kind: 'network-visual__node--relay' },
+];
+
+const edges = [
+  ['ai', 'systems'],
+  ['ai', 'relay-top'],
+  ['systems', 'relay-top'],
+  ['relay-top', 'platforms'],
+  ['systems', 'platforms'],
+  ['systems', 'security'],
+  ['security', 'relay-south'],
+  ['relay-south', 'platforms'],
+  ['platforms', 'relay-core'],
+  ['relay-core', 'distributed'],
+  ['distributed', 'networks'],
+  ['platforms', 'networks'],
+  ['networks', 'relay-east'],
+  ['relay-east', 'cloud'],
+  ['platforms', 'relay-east'],
+  ['cloud', 'reliability'],
+  ['relay-south', 'reliability'],
+  ['platforms', 'reliability'],
+];
+
+const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
 ---
 
 <div class="network-visual" aria-hidden="true">
-  <div class="network-visual__halo network-visual__halo--one"></div>
-  <div class="network-visual__halo network-visual__halo--two"></div>
   <svg viewBox="0 0 680 540" role="presentation">
+    <g class="network-visual__halo-rings">
+      <circle cx="340" cy="260" r="226" />
+      <circle cx="340" cy="260" r="142" />
+    </g>
     <g class="network-visual__lines">
-      <line x1="130" y1="68" x2="96" y2="156" />
-      <line x1="130" y1="68" x2="200" y2="82" />
-      <line x1="96" y1="156" x2="200" y2="82" />
-      <line x1="96" y1="156" x2="310" y2="178" />
-      <line x1="200" y1="82" x2="310" y2="178" />
-      <line x1="310" y1="178" x2="408" y2="59" />
-      <line x1="408" y1="59" x2="494" y2="161" />
-      <line x1="494" y1="161" x2="582" y2="125" />
-      <line x1="48" y1="252" x2="96" y2="156" />
-      <line x1="48" y1="252" x2="172" y2="332" />
-      <line x1="96" y1="156" x2="172" y2="332" />
-      <line x1="172" y1="332" x2="310" y2="278" />
-      <line x1="172" y1="332" x2="244" y2="440" />
-      <line x1="244" y1="440" x2="310" y2="278" />
-      <line x1="310" y1="178" x2="310" y2="278" />
-      <line x1="310" y1="278" x2="408" y2="345" />
-      <line x1="310" y1="178" x2="408" y2="345" />
-      <line x1="408" y1="345" x2="526" y2="429" />
-      <line x1="526" y1="429" x2="600" y2="360" />
-      <line x1="600" y1="360" x2="632" y2="325" />
-      <line x1="632" y1="325" x2="570" y2="271" />
-      <line x1="570" y1="271" x2="494" y2="161" />
-      <line x1="310" y1="278" x2="570" y2="271" />
+      {edges.map(([from, to]) => {
+        const start = nodeById[from];
+        const end = nodeById[to];
+        return <line x1={start.x} y1={start.y} x2={end.x} y2={end.y} />;
+      })}
     </g>
     <g class="network-visual__nodes">
-      <circle cx="96" cy="156" r="7" />
-      <circle cx="200" cy="82" r="5" />
-      <circle class="network-visual__node--ai" cx="130" cy="68" r="6" />
-      <circle cx="310" cy="178" r="8" />
-      <circle cx="408" cy="59" r="6" />
-      <circle cx="494" cy="161" r="8" />
-      <circle cx="582" cy="125" r="5" />
-      <circle cx="172" cy="332" r="6" />
-      <circle cx="244" cy="440" r="5" />
-      <circle cx="310" cy="278" r="8" />
-      <circle cx="408" cy="345" r="5" />
-      <circle cx="526" cy="429" r="8" />
-      <circle cx="570" cy="271" r="6" />
-      <circle cx="48" cy="252" r="4" />
-      <circle cx="632" cy="325" r="4" />
-      <circle class="network-visual__node--cloud" cx="600" cy="360" r="6" />
+      {nodes.map((node) => (
+        <circle class={node.kind} cx={node.x} cy={node.y} r={node.r} />
+      ))}
     </g>
     <g class="network-visual__rings">
-      <circle cx="96" cy="156" r="19" />
-      <circle cx="130" cy="68" r="16" />
-      <circle cx="494" cy="161" r="22" />
-      <circle cx="310" cy="278" r="20" />
-      <circle cx="526" cy="429" r="19" />
-      <circle cx="600" cy="360" r="17" />
+      {nodes.filter((node) => node.ring).map((node) => (
+        <circle cx={node.x} cy={node.y} r={node.ring} />
+      ))}
     </g>
     <g class="network-visual__labels">
-      <text x="119" y="48">AI</text>
-      <text x="74" y="124">SYSTEMS</text>
-      <text x="74" y="139">ENGINEERING</text>
-      <text x="516" y="102">DISTRIBUTED</text>
-      <text x="516" y="117">SYSTEMS</text>
-      <text x="527" y="188">NETWORKS</text>
-      <text x="55" y="387">SECURITY</text>
-      <text x="555" y="389">CLOUD</text>
-      <text x="398" y="478">RELIABILITY</text>
-      <text x="310" y="255">PLATFORMS</text>
+      {nodes.flatMap((node) => node.labels ?? []).map((label) => (
+        <text x={label.x} y={label.y} text-anchor={label.anchor ?? 'start'}>{label.text}</text>
+      ))}
     </g>
   </svg>
 </div>

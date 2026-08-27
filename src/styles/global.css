@@ -448,18 +448,18 @@ a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 5px; 
 .inline-link--light:hover { color: var(--accent-info); }
 .arrow { width: 1rem; height: 1rem; transform: rotate(var(--arrow-rotation)); }
 
-.network-visual { position: relative; min-height: 34rem; isolation: isolate; }
-.network-visual svg { position: relative; z-index: 1; width: 100%; height: auto; overflow: visible; }
+.network-visual { position: relative; min-height: 34rem; }
+.network-visual svg { display: block; width: 100%; height: auto; overflow: visible; }
+.network-visual__halo-rings circle { fill: none; stroke: rgb(89 101 204 / 24%); stroke-width: 1; }
+.network-visual__halo-rings circle:last-child { stroke: rgb(163 214 207 / 14%); }
 .network-visual__lines line { stroke: rgb(124 134 223 / 63%); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .network-visual__nodes circle { fill: var(--ink); stroke: var(--accent-secondary); stroke-width: 1.4; }
-.network-visual__nodes circle:nth-child(3n) { fill: var(--accent-info); }
+.network-visual__nodes .network-visual__node--hub { fill: var(--accent-info); }
 .network-visual__nodes .network-visual__node--ai { fill: var(--accent-bright); }
 .network-visual__nodes .network-visual__node--cloud { fill: var(--accent-secondary); }
+.network-visual__nodes .network-visual__node--relay { fill: var(--ink); }
 .network-visual__rings circle { fill: none; stroke: rgb(163 214 207 / 33%); stroke-width: 1; }
 .network-visual__labels text { fill: rgb(239 241 244 / 75%); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9px; letter-spacing: 0.16em; }
-.network-visual__halo { position: absolute; z-index: -1; border: 1px solid rgb(89 101 204 / 24%); border-radius: 50%; }
-.network-visual__halo--one { top: 7%; right: 8%; width: 70%; aspect-ratio: 1; }
-.network-visual__halo--two { top: 24%; right: 25%; width: 42%; aspect-ratio: 1; border-color: rgb(163 214 207 / 14%); }
 
 .principles { padding-bottom: clamp(4.5rem, 8vw, 7rem); }
 .principles__grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border-dark); }
