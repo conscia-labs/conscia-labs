@@ -8,32 +8,32 @@ export type GatewayItem = {
 export const aiGatewayCapabilities: GatewayItem[] = [
   {
     number: '01',
-    title: 'One governed access layer',
-    description: 'Give developers, engineers, and employees a consistent way to access approved models without every team building its own integration.',
+    title: 'One access layer for the organization',
+    description: 'Give developers, engineers, and employees one consistent way to use approved models instead of having each team build its own integration.',
     accent: '#aeb6ef',
   },
   {
     number: '02',
-    title: 'Models across providers',
-    description: 'Expose models from AWS Bedrock, OpenAI, Anthropic, Google, and Conscia’s own model portfolio through one enterprise gateway.',
+    title: 'Models from several providers',
+    description: 'Make models from AWS Bedrock, OpenAI, Anthropic, Google, and Conscia’s own portfolio available through one enterprise gateway.',
     accent: '#8ed4df',
   },
   {
     number: '03',
-    title: 'Security embedded in the path',
-    description: 'Make secure model access part of the platform itself, with organizational controls around how AI is accessed and used.',
+    title: 'Security in the request path',
+    description: 'Put access controls in the platform itself, with clear rules for how AI can be used.',
     accent: '#a3d6cf',
   },
   {
     number: '04',
-    title: 'Usage, limits, and billing',
-    description: 'Track usage, enforce allowances, and give organizations the visibility needed to manage demand and cost.',
+    title: 'Usage, limits, and cost',
+    description: 'Track requests, enforce limits, and give organizations the visibility they need to manage demand and cost.',
     accent: '#ffd083',
   },
   {
     number: '05',
-    title: 'Self-service with guidance',
-    description: 'Help people move from credentials to a successful request with guided setup, a sandbox, quickstart paths, and production-ready examples.',
+    title: 'A guided first request',
+    description: 'Help people make a working request with guided setup, a sandbox, quickstarts, and production-ready examples.',
     accent: '#7c86df',
   },
 ];
@@ -41,20 +41,20 @@ export const aiGatewayCapabilities: GatewayItem[] = [
 export const aiGatewayDifferentiators: GatewayItem[] = [
   {
     number: 'A',
-    title: 'Governance by default',
-    description: 'AI Gateway is designed around organizational access and accountability, not just making an API call possible.',
+    title: 'Access and accountability by default',
+    description: 'Start with who can use which model and how that use is tracked; the API call is only one part of the job.',
     accent: '#aeb6ef',
   },
   {
     number: 'B',
-    title: 'Built for the whole organization',
-    description: 'The same platform supports experienced engineers, developers building integrations, and employees experimenting with AI.',
+    title: 'For developers and day-to-day users',
+    description: 'Engineers can build integrations while employees experiment with AI in the same platform.',
     accent: '#a3d6cf',
   },
   {
     number: 'C',
-    title: 'A better path from trial to practice',
-    description: 'Self-service onboarding, sandbox access, usage feedback, and guided assistance make experimentation easier to govern and easier to scale.',
+    title: 'A clear route to regular use',
+    description: 'Self-service setup, sandbox access, usage feedback, and guidance let teams test an idea before they take it into regular use.',
     accent: '#8ed4df',
   },
 ];

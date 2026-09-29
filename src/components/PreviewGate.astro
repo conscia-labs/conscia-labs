@@ -14,14 +14,14 @@ const formAction = Astro.url.pathname;
   <div class="preview-gate__panel">
     <p class="section-label">Private preview</p>
     <h1 id="preview-gate-title">{title}</h1>
-    <p class="preview-gate__intro">This page is being shared with invited reviewers. Enter the inspection password to continue.</p>
+    <p class="preview-gate__intro">This is a private preview for invited reviewers. Enter the password to continue.</p>
     <form class="preview-gate__form" data-preview-gate-form method="get" action={formAction}>
-      <label class="sr-only" for="preview-password">Inspection password</label>
+      <label class="sr-only" for="preview-password">Preview password</label>
       <input id="preview-password" name="unlock" type="password" autocomplete="current-password" placeholder="Enter password" required />
       <button class="button button--primary" type="submit">Unlock preview <Arrow /></button>
     </form>
     <p class="preview-gate__error" data-preview-gate-error role="alert" hidden>That password doesn’t match. Try again.</p>
-    <p class="preview-gate__note">Temporary access for Conscia Labs collaborators.</p>
+    <p class="preview-gate__note">Preview access for Conscia Labs collaborators.</p>
     <a class="inline-link inline-link--light" href="/">Back to Conscia Labs <Arrow /></a>
   </div>
 </section>
