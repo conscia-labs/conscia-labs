@@ -1,0 +1,145 @@
+/*
+ * Conscia design-system 1.8.0: selected foundation and airy tokens.
+ * Source: https://github.com/conscia-labs/design-system/blob/cf8bdffd36a74ad65f14d26836d306e918cc0a2e/src/foundation/styles.css
+ * Marketing adaptation: scope appearance to existing sections instead of
+ * switching the whole document. App-only typography/rows are not copied.
+ * Source Sans 3 remains the site's font; upstream defaults to Inter.
+ *
+ * MIT License
+ * Copyright (c) 2026 Conscia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+:root {
+  --palette-black: #140c15;
+  --palette-burgundy: #1e0721;
+  --palette-burgundy-raised: #2a0c2e;
+  --palette-electric-blue: #4962ff;
+  --palette-electric-blue-dark: #3344b2;
+  --palette-green: #1c4e51;
+  --palette-green-pale: #a3d6cf;
+  --palette-peach: #ffe8e9;
+  --palette-peach-dark: #ffa1a8;
+  --palette-peach-darkest: #c44a53;
+  --ds-font-weight-regular: 380;
+  --ds-font-weight-medium: 570;
+  --ds-font-weight-semibold: 670;
+  --ds-title-line-height: 1.15;
+  --ds-display-line-height: 1.05;
+  --ds-section-title-tracking: -0.012em;
+  --ds-section-title-line-height: 1.25;
+  --ds-button-text-size: 0.875rem;
+  --ds-button-text-weight: var(--ds-font-weight-medium);
+  --ds-radius-pill: 999px;
+}
+
+:root,
+.section-light,
+[data-appearance-scope="light"] {
+  color-scheme: light;
+  --canvas: #f3f4f5;
+  --surface: #ffffff;
+  --surface-muted: #ecedef;
+  --surface-raised: #ffffff;
+  --surface-floating: #ffffff;
+  --surface-control: var(--surface-muted);
+  --text-primary: var(--palette-black);
+  --text-secondary: #373b4a;
+  --text-supporting: #575b69;
+  --text-muted: #5f6372;
+  --text-link: var(--palette-electric-blue-dark);
+  --brand-supporting: var(--palette-green);
+  --action: var(--palette-electric-blue);
+  --action-foreground: #ffffff;
+  --action-hover: var(--palette-electric-blue-dark);
+  --action-active: #28348c;
+  --action-background: #eceeff;
+  --focus: var(--palette-electric-blue);
+  --border-subtle: #e4e5e5;
+  --information: #28758a;
+  --danger: #c03a1c;
+  --highlight-background: var(--palette-peach);
+  --highlight-foreground: var(--palette-burgundy);
+  --highlight-accent: var(--palette-peach-darkest);
+}
+
+[data-mood="airy"] {
+  --canvas: #fcfbfd;
+  --radius: 1rem;
+  --ds-radius-surface: 1.5rem;
+  --ds-radius-control: var(--ds-radius-pill);
+  --ds-field-control-radius: 1rem;
+  --ds-field-control-height: 3rem;
+  --ds-field-control-padding-x: 1.125rem;
+  --ds-shadow-raised: none;
+  --ds-surface-padding: 1.75rem;
+  --ds-space-group: 1.75rem;
+  --ds-space-section: 3.5rem;
+  --ds-space-page: 3.5rem;
+  --ds-field-gap: 1.5rem;
+  --ds-title-weight: var(--ds-font-weight-medium);
+  --ds-title-tracking: -0.024em;
+  --ds-card-title-weight: var(--ds-font-weight-medium);
+  --ds-eyebrow-size: 0.8125rem;
+  --ds-eyebrow-tracking: 0;
+  --ds-control-padding-x: 1.25rem;
+  --ds-ease-playful: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ds-app-header-height: 4.5rem;
+  --ds-app-header-scrolled-inset-y: 0.5rem;
+  --ds-app-header-scrolled-radius: var(--ds-radius-pill);
+  --ds-app-header-scrolled-background: color-mix(in oklab, var(--surface) 92%, transparent);
+  --ds-app-header-scrolled-shadow: 0 0.5rem 1.5rem -0.5rem rgb(30 7 33 / 18%), 0 0 0 1px rgb(30 7 33 / 4%);
+}
+
+/* Restore the airy light canvas inside an existing dark page shell. */
+.section-light,
+[data-appearance-scope="light"] { --canvas: #fcfbfd; }
+
+/* Upstream dark appearance values, scoped for this mixed-surface site. */
+.section-dark,
+.hero-shell,
+.project-detail-shell,
+.focus-detail-shell,
+.preview-gate,
+.project-visual {
+  color-scheme: dark;
+  --canvas: #1a171a;
+  --surface: #221e22;
+  --surface-muted: #2d2a2e;
+  --surface-raised: #2a262a;
+  --surface-floating: #312e32;
+  --surface-control: var(--surface-raised);
+  --text-primary: #f3f0f3;
+  --text-secondary: #dad6db;
+  --text-supporting: #bdb7bd;
+  --text-muted: #9d979d;
+  --text-link: #a9b4ff;
+  --brand-supporting: var(--palette-green-pale);
+  --action-hover: #3f55e6;
+  --action-active: var(--palette-electric-blue-dark);
+  --action-background: #23284a;
+  --focus: #7f8fff;
+  --border-subtle: rgb(255 255 255 / 7%);
+  --information: #8ed4df;
+  --danger: #ff9f85;
+  --highlight-background: #3a1840;
+  --highlight-foreground: var(--palette-peach-dark);
+  --highlight-accent: var(--palette-peach-dark);
+}

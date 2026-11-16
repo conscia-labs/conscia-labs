@@ -18,11 +18,11 @@ const previewPasswordHash = '4bd6943e0f78937678b116a6ec5e90e404fc24c6be1194d0e6c
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-mood="airy">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#17191c" />
+    <meta name="theme-color" content="#1a171a" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
@@ -72,6 +72,7 @@ const previewPasswordHash = '4bd6943e0f78937678b116a6ec5e90e404fc24c6be1194d0e6c
             } else if (submittedPassword) {
               const error = document.querySelector('[data-preview-gate-error]');
               if (error) error.hidden = false;
+              document.querySelector('#preview-password')?.setAttribute('aria-invalid', 'true');
               window.history.replaceState({}, '', window.location.pathname + window.location.hash);
             }
           } catch {

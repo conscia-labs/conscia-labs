@@ -2,15 +2,68 @@
 import BrandMark from './BrandMark.astro';
 ---
 
-<header class="site-header">
-  <div class="container site-header__inner">
-    <BrandMark />
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="/#projects">Projects</a>
-      <a href="/#focus-areas">Focus Areas</a>
-      <a href="/#about">About</a>
-      <a href="https://docs.conscialabs.com" target="_blank" rel="noreferrer">Documentation</a>
-      <a href="https://github.com/conscia-labs" target="_blank" rel="noreferrer">GitHub</a>
-    </nav>
-  </div>
-</header>
+<div class="site-header-slot" data-header-slot>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <BrandMark adaptive />
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/#projects">Projects</a>
+        <a href="/#focus-areas">Focus Areas</a>
+        <a href="/#about">About</a>
+        <a href="https://docs.conscialabs.com" target="_blank" rel="noreferrer">Documentation</a>
+        <a href="https://github.com/conscia-labs" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const slot = document.querySelector<HTMLElement>('[data-header-slot]');
+  const content = document.querySelector<HTMLElement>('[data-preview-content]');
+
+  if (header && slot && content) {
+    // The source AppHeader activates its capsule at any positive window scroll.
+    // Keep the header in flow without JS, and reserve its actual height when fixed.
+    const measure = () => {
+      if (content.hidden) return;
+      const height = header.getBoundingClientRect().height;
+      if (height > 0) {
+        slot.style.height = `${height}px`;
+        document.documentElement.style.setProperty('--site-header-offset', `${height + 16}px`);
+      }
+    };
+
+    const updateAppearance = () => {
+      const scrolled = !content.hidden && window.scrollY > 0;
+      if (scrolled) {
+        if (header.dataset.scrolled === 'true') return;
+        header.dataset.scrolled = 'true';
+        header.dataset.appearanceScope = 'light';
+      } else {
+        header.removeAttribute('data-scrolled');
+        header.removeAttribute('data-appearance-scope');
+      }
+    };
+
+    // The preview starts hidden, so do not depend on its initial dimensions.
+    const visibility = new MutationObserver(() => {
+      updateAppearance();
+      measure();
+    });
+    visibility.observe(content, { attributes: true, attributeFilter: ['hidden'] });
+    const size = new ResizeObserver(measure);
+    size.observe(header);
+    window.addEventListener('scroll', updateAppearance, { passive: true });
+    window.addEventListener('resize', measure, { passive: true });
+    updateAppearance();
+    measure();
+
+    document.addEventListener('astro:before-swap', () => {
+      visibility.disconnect();
+      size.disconnect();
+      window.removeEventListener('scroll', updateAppearance);
+      window.removeEventListener('resize', measure);
+    }, { once: true });
+  }
+</script>

@@ -4,13 +4,15 @@ import symbolWhite from '../../conscia_symbol_white.svg';
 
 interface Props {
   inverse?: boolean;
+  adaptive?: boolean;
 }
 
-const { inverse = true } = Astro.props;
+const { inverse = true, adaptive = false } = Astro.props;
 const symbol = inverse ? symbolWhite : symbolBlack;
 ---
 
 <a class:list={['brand-mark', { 'brand-mark--inverse': inverse }]} href="/" aria-label="Conscia Labs home">
   <img class="brand-mark__icon" src={symbol.src} alt="" aria-hidden="true" />
+  {adaptive && inverse && <img class="brand-mark__icon brand-mark__icon--alternate" src={symbolBlack.src} alt="" aria-hidden="true" />}
   <span class="brand-mark__name">CONSCIA <span>LABS</span></span>
 </a>

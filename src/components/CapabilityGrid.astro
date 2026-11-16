@@ -25,7 +25,7 @@ const {
 
 <section class:list={['capability-section', { 'section-dark': dark, 'section-light': !dark }]} id={id} aria-labelledby={`${id}-title`}>
   <div class="container">
-    <div class="section-intro section-intro--dark capability-section__intro">
+    <div class:list={['section-intro', 'capability-section__intro', { 'section-intro--dark': dark, 'section-intro--light': !dark }]}>
       <div>
         <p class="section-label">02 / Capabilities</p>
         <h2 id={`${id}-title`}>{heading}</h2>
