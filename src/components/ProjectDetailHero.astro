@@ -2,6 +2,7 @@
 import Arrow from './Arrow.astro';
 import Header from './Header.astro';
 import ProjectVisual from './ProjectVisual.astro';
+import type { ProjectVisual as ProjectVisualType } from '../data/projects';
 
 interface Props {
   name: string;
@@ -10,9 +11,26 @@ interface Props {
   description: string;
   status?: string;
   externalHref: string;
+  lede?: string;
+  visual?: ProjectVisualType;
+  mediaLabel?: string;
+  actionLabel?: string;
+  statusLabel?: string;
 }
 
-const { name, category, type, description, status, externalHref } = Astro.props;
+const {
+  name,
+  category,
+  type,
+  description,
+  status,
+  externalHref,
+  lede = 'Model access with controls from the first request.',
+  visual = 'gateway',
+  mediaLabel = 'A controlled route to the models your organization uses.',
+  actionLabel = 'Open AI Gateway',
+  statusLabel = 'Closed beta',
+} = Astro.props;
 ---
 
 <div class="project-detail-shell">
@@ -24,17 +42,17 @@ const { name, category, type, description, status, externalHref } = Astro.props;
         <div class="project-detail-hero__copy">
           <p class="project-detail-meta">{category} <span aria-hidden="true">/</span> {type}</p>
           <h1 id="project-title">{name}</h1>
-          <p class="project-detail-hero__lede">Model access with controls from the first request.</p>
+          <p class="project-detail-hero__lede">{lede}</p>
           <p class="project-detail-hero__description">{description}</p>
-          {status && <p class="project-detail-hero__status"><span>Closed beta</span>{status}</p>}
+          {status && <p class="project-detail-hero__status"><span>{statusLabel}</span>{status}</p>}
           <div class="project-detail-hero__actions">
-            <a class="button button--primary" href={externalHref} target="_blank" rel="noreferrer">Open AI Gateway <Arrow /></a>
+            <a class="button button--primary" href={externalHref} target="_blank" rel="noreferrer">{actionLabel} <Arrow /></a>
             <a class="inline-link inline-link--light" href="#capabilities">Explore capabilities <Arrow /></a>
           </div>
         </div>
         <div class="project-detail-hero__media">
-          <ProjectVisual visual="gateway" />
-          <p class="project-detail-hero__media-label">A controlled route to the models your organization uses.</p>
+          <ProjectVisual visual={visual} />
+          <p class="project-detail-hero__media-label">{mediaLabel}</p>
         </div>
       </div>
     </div>

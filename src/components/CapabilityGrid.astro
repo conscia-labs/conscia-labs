@@ -1,13 +1,26 @@
 ---
-import type { GatewayItem } from '../data/ai-gateway';
-
-interface Props {
-  items: GatewayItem[];
-  id?: string;
-  dark?: boolean;
+interface CapabilityItem {
+  number: string;
+  title: string;
+  description: string;
+  accent: string;
 }
 
-const { items, id = 'capabilities', dark = true } = Astro.props;
+interface Props {
+  items: CapabilityItem[];
+  id?: string;
+  dark?: boolean;
+  heading?: string;
+  introduction?: string;
+}
+
+const {
+  items,
+  id = 'capabilities',
+  dark = true,
+  heading = 'The pieces teams need to get started.',
+  introduction = 'Model access, controls, and setup live in one place, so a team can get an idea into a working request with less friction.',
+} = Astro.props;
 ---
 
 <section class:list={['capability-section', { 'section-dark': dark, 'section-light': !dark }]} id={id} aria-labelledby={`${id}-title`}>
@@ -15,9 +28,9 @@ const { items, id = 'capabilities', dark = true } = Astro.props;
     <div class="section-intro section-intro--dark capability-section__intro">
       <div>
         <p class="section-label">02 / Capabilities</p>
-        <h2 id={`${id}-title`}>The pieces teams need to get started.</h2>
+        <h2 id={`${id}-title`}>{heading}</h2>
       </div>
-      <p>Model access, controls, and setup live in one place, so a team can get an idea into a working request with less friction.</p>
+      <p>{introduction}</p>
     </div>
     <div class="capability-grid">
       {items.map((item) => (

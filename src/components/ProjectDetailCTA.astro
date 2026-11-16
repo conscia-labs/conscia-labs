@@ -3,18 +3,28 @@ import Arrow from './Arrow.astro';
 
 interface Props {
   externalHref: string;
+  label?: string;
+  heading?: string;
+  description?: string;
+  actionLabel?: string;
 }
 
-const { externalHref } = Astro.props;
+const {
+  externalHref,
+  label = '04 / Closed beta',
+  heading = 'Give your teams a controlled route to AI.',
+  description = 'AI Gateway is in closed beta. Contact your Conscia representative to learn more.',
+  actionLabel = 'Open AI Gateway',
+} = Astro.props;
 ---
 
 <section class="project-detail-cta section-dark" aria-labelledby="project-cta-title">
   <div class="container project-detail-cta__inner">
     <div>
-        <p class="section-label">04 / Closed beta</p>
-        <h2 id="project-cta-title">Give your teams a controlled route to AI.</h2>
-        <p>AI Gateway is in closed beta. Contact your Conscia representative to learn more.</p>
+      <p class="section-label">{label}</p>
+      <h2 id="project-cta-title">{heading}</h2>
+      <p>{description}</p>
     </div>
-    <a class="button button--outline" href={externalHref} target="_blank" rel="noreferrer">Open AI Gateway <Arrow /></a>
+    <a class="button button--outline" href={externalHref} target="_blank" rel="noreferrer">{actionLabel} <Arrow /></a>
   </div>
 </section>

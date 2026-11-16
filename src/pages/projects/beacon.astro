@@ -1,0 +1,81 @@
+---
+import CapabilityGrid from '../../components/CapabilityGrid.astro';
+import Footer from '../../components/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
+import ProjectDetailCTA from '../../components/ProjectDetailCTA.astro';
+import ProjectDetailHero from '../../components/ProjectDetailHero.astro';
+import { beaconCapabilities, beaconUseCases } from '../../data/beacon';
+import { projects } from '../../data/projects';
+
+const beacon = projects.find((project) => project.visual === 'beacon');
+if (!beacon?.externalHref) throw new Error('Beacon project must have an application URL.');
+---
+
+<Layout
+  title="Beacon — Conscia Labs"
+  description="Beacon is an enterprise AI workspace for engineers, consultants, and business teams, bringing together persistent context, organizational knowledge, tools, workflows, and assistants."
+  noIndex
+>
+  <div class="project-page">
+    <ProjectDetailHero
+      name={beacon.name}
+      category={beacon.category}
+      type={beacon.type}
+      description={beacon.description}
+      lede="An AI workspace for the work in front of you."
+      visual={beacon.visual}
+      mediaLabel="Context, knowledge, tools, and assistants around your work."
+      actionLabel="Open Beacon"
+      externalHref={beacon.externalHref}
+    />
+
+    <section class="detail-overview section-light" aria-labelledby="overview-title">
+      <div class="container detail-overview__grid">
+        <div>
+          <p class="section-label">01 / What is Beacon?</p>
+          <h2 id="overview-title">More than a standalone conversation.</h2>
+        </div>
+        <div class="detail-overview__copy">
+          <p>Beacon brings AI assistance into a workspace built around a task. The conversation sits alongside the context, knowledge, tools, and workflows that help you move the work forward.</p>
+          <p>It is for engineers, consultants, and people across the business. Bring a question, a document, or an idea; work through it with an assistant; and keep the context together as the task develops.</p>
+        </div>
+      </div>
+    </section>
+
+    <CapabilityGrid
+      items={beaconCapabilities}
+      heading="The workspace around the assistant."
+      introduction="Useful AI needs more than a prompt. Beacon brings the context and ways of working together so the assistant can help with a task, not just answer a question."
+    />
+
+    <section class="differentiators section-light" aria-labelledby="use-cases-title">
+      <div class="container">
+        <div class="section-intro section-intro--light">
+          <div>
+            <p class="section-label">03 / In practice</p>
+            <h2 id="use-cases-title">From a question to useful work.</h2>
+          </div>
+          <p>You do not need to be a programmer to use Beacon. Thinking, writing, and understanding are part of the work too; technical tasks can go further when tools and permissions are available.</p>
+        </div>
+        <div class="differentiator-grid">
+          {beaconUseCases.map((item) => (
+            <article class="differentiator" style={`--item-accent: ${item.accent}`}>
+              <span class="differentiator__number">{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProjectDetailCTA
+      label="04 / Beacon workspace"
+      heading="Bring your next task to Beacon."
+      description="Open the Beacon workspace at beacon.conscialabs.com to continue."
+      actionLabel="Open Beacon"
+      externalHref={beacon.externalHref}
+    />
+    <Footer />
+  </div>
+</Layout>

@@ -27,7 +27,8 @@ export const projects: Project[] = [
     type: 'Application',
     description:
       'An enterprise AI workspace where teams can bring together persistent context, organizational knowledge, tools, workflows, and assistants.',
-    href: 'https://beacon.conscialabs.com',
+    href: '/projects/beacon',
+    externalHref: 'https://beacon.conscialabs.com',
     visual: 'beacon',
   },
   {
