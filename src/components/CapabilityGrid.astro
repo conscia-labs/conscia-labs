@@ -12,12 +12,14 @@ interface Props {
   dark?: boolean;
   heading?: string;
   introduction?: string;
+  label?: string;
 }
 
 const {
   items,
   id = 'capabilities',
   dark = true,
+  label = '02 / Capabilities',
   heading = 'The pieces teams need to get started.',
   introduction = 'Model access, controls, and setup live in one place, so a team can get an idea into a working request with less friction.',
 } = Astro.props;
@@ -27,7 +29,7 @@ const {
   <div class="container">
     <div class:list={['section-intro', 'capability-section__intro', { 'section-intro--dark': dark, 'section-intro--light': !dark }]}>
       <div>
-        <p class="section-label">02 / Capabilities</p>
+        <p class="section-label">{label}</p>
         <h2 id={`${id}-title`}>{heading}</h2>
       </div>
       <p>{introduction}</p>

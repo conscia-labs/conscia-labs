@@ -720,7 +720,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 .focus-detail-cta__inner > div > p:last-child { max-width: 30rem; margin: 1.5rem 0 0; color: var(--text-on-dark-muted); font-size: 1rem; line-height: 1.7; }
 
 .projects { padding-block: var(--space-section); }
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ds-space-group); }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--ds-space-group); }
 .project-card { display: flex; flex-direction: column; min-height: 100%; border: 1px solid transparent; border-radius: var(--radius-md); background: var(--paper-raised); overflow: hidden; box-shadow: var(--ds-shadow-raised); transition: background 220ms ease, transform 220ms var(--ds-ease-playful); }
 .project-card:hover { background: color-mix(in oklab, var(--action-background) 25%, var(--surface)); }
 .project-visual { position: relative; min-height: 13rem; margin: 0.65rem; border-radius: calc(var(--radius-md) - 0.2rem); background: var(--ink); overflow: hidden; isolation: isolate; }
@@ -743,15 +743,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 .project-visual__satellite { position: absolute; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--accent-bright); }
 .project-visual__satellite--one { top: 25%; left: 68%; }
 .project-visual__satellite--two { top: 72%; left: 21%; background: var(--accent); }
-
-.project-visual--ccode { background: linear-gradient(135deg, rgb(from var(--accent) r g b /10%), transparent 55%), var(--ink); }
-.project-visual__cube { position: absolute; width: 4.1rem; height: 4.1rem; border: 1px solid rgb(from var(--accent-secondary) r g b /80%); transform: rotate(30deg) skewY(-8deg); }
-.project-visual__cube--one { top: 29%; left: 23%; }
-.project-visual__cube--two { top: 44%; left: 42%; width: 4.9rem; height: 4.9rem; opacity: 0.7; }
-.project-visual__cube--three { top: 17%; left: 49%; width: 2.5rem; height: 2.5rem; opacity: 0.35; }
-.project-visual__code-line { position: absolute; left: 18%; width: 2.6rem; height: 1px; background: var(--accent); opacity: 0.8; }
-.project-visual__code-line--one { bottom: 20%; }
-.project-visual__code-line--two { bottom: 26%; left: 28%; width: 1.6rem; opacity: 0.4; }
 
 .project-card__content { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: var(--ds-surface-padding); }
 .project-card__meta { display: flex; flex-wrap: wrap; gap: 0.55rem 1rem; color: var(--copy-muted); font-size: 0.75rem; }

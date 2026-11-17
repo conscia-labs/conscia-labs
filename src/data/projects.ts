@@ -1,4 +1,4 @@
-export type ProjectVisual = 'gateway' | 'beacon' | 'ccode';
+export type ProjectVisual = 'gateway' | 'beacon';
 
 export type Project = {
   name: string;
@@ -24,20 +24,11 @@ export const projects: Project[] = [
   {
     name: 'Beacon',
     category: 'Artificial Intelligence',
-    type: 'Application',
+    type: 'Ecosystem',
     description:
-      'An enterprise AI workspace where teams can bring together persistent context, organizational knowledge, tools, workflows, and assistants.',
+      'Conscia’s internal AI ecosystem for productivity and engineering: Beacon Work on the desktop, Beacon Code in the terminal, and supporting capabilities in Beacon Cloud.',
     href: '/projects/beacon',
     externalHref: 'https://beacon.conscialabs.com',
     visual: 'beacon',
-  },
-  {
-    name: 'C>Code',
-    category: 'Artificial Intelligence',
-    type: 'Engineering Tool',
-    description:
-      'An AI-native engineering environment for infrastructure, networking, cloud, and security engineers.',
-    href: 'https://ccode.conscialabs.com',
-    visual: 'ccode',
   },
 ];
