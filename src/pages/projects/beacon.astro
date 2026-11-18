@@ -13,7 +13,7 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
 
 <Layout
   title="Beacon — Conscia Labs"
-  description="Beacon is Conscia’s internal AI ecosystem for productivity and engineering: Beacon Work on the desktop, Beacon Code in the terminal, and supporting capabilities in Beacon Cloud."
+  description="Beacon is Conscia’s internal AI ecosystem. Beacon Work is the desktop app, Beacon Code the terminal client, and Beacon Cloud supports both."
   noIndex
 >
   <div class="project-page">
@@ -22,9 +22,9 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
       category={beacon.category}
       type={beacon.type}
       description={beacon.description}
-      lede="AI for Conscia’s everyday work and engineering."
+      lede="AI help for Conscia colleagues."
       visual={beacon.visual}
-      mediaLabel="Beacon Work, Beacon Code, and Beacon Cloud around your work."
+      mediaLabel="Beacon Work, Beacon Code, and Beacon Cloud."
       actionLabel="Open Beacon Cloud"
       externalHref={beacon.externalHref}
     />
@@ -33,11 +33,11 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
       <div class="container detail-overview__grid">
         <div>
           <p class="section-label">01 / What is Beacon?</p>
-          <h2 id="overview-title">One ecosystem. Three ways to support the work.</h2>
+          <h2 id="overview-title">Beacon, in three parts.</h2>
         </div>
         <div class="detail-overview__copy">
-          <p>Beacon brings AI into the work of Conscia colleagues: understanding information, developing documents and ideas, and getting hands-on with engineering tasks.</p>
-          <p>Beacon Work is the desktop app. Beacon Code is the terminal coding client. Beacon Cloud provides the central capabilities that support them. The clients and their supporting Cloud capabilities are available for internal Conscia use today.</p>
+          <p>Beacon is for Conscia colleagues. Use it to make sense of information, work on a document, or tackle an engineering task.</p>
+          <p>Work is the desktop app, Code is the terminal client, and Cloud supports both. Work and Code are available for internal Conscia use today, along with the Cloud services they need.</p>
         </div>
       </div>
     </section>
@@ -49,7 +49,7 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
             <p class="section-label">02 / Available today</p>
             <h2 id="ecosystem-title">Desktop, terminal, and cloud.</h2>
           </div>
-          <p>Use Beacon Work for productivity and engineering on the desktop, or Beacon Code for coding in the terminal. Beacon Cloud supports both with shared central capabilities.</p>
+          <p>Use Work on the desktop or Code in the terminal. Cloud provides the services behind them.</p>
         </div>
         <div class="differentiator-grid">
           {beaconProducts.map((product) => (
@@ -66,8 +66,8 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
     <CapabilityGrid
       items={beaconCapabilities}
       label="03 / Why Beacon?"
-      heading="Built around how Conscia works."
-      introduction="Institutional knowledge, the marketplace, and a purpose-built experience make Beacon more than a standalone AI conversation."
+      heading="Help that fits the job."
+      introduction="Beacon brings Conscia knowledge and tools into the clients we use for everyday tasks."
     />
 
     <section class="differentiators section-light" aria-labelledby="use-cases-title">
@@ -75,9 +75,9 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
         <div class="section-intro section-intro--light">
           <div>
             <p class="section-label">04 / In practice</p>
-            <h2 id="use-cases-title">From a question to useful work.</h2>
+            <h2 id="use-cases-title">What you can do with it.</h2>
           </div>
-          <p>You do not need to be a programmer to use Beacon Work. Thinking, writing, and understanding are part of the work too. Engineers can also use Work or Code to act on a task and review the results.</p>
+          <p>You don’t need to code to use Beacon Work. Start with a document or a question. If you’re doing engineering, Work and Code can help you make changes and check the results.</p>
         </div>
         <div class="differentiator-grid">
           {beaconUseCases.map((item) => (
@@ -98,16 +98,16 @@ if (!beacon?.externalHref) throw new Error('Beacon project must have an applicat
           <h2 id="autonomy-title">Agents that work in the background.</h2>
         </div>
         <div class="detail-overview__copy">
-          <p>Autonomous Cloud agents and automations have not been developed yet. The direction is for Beacon Cloud to perform work independently, without a running desktop or terminal client.</p>
-          <p>Future agents could reach out when an email or calendar invitation arrives, or check things in the background and let a colleague know what needs attention. These are examples of the planned direction, not capabilities available today.</p>
+          <p>Autonomous Cloud agents and automations aren’t built yet. The plan is for Cloud to run tasks without a desktop or terminal client running.</p>
+          <p>An agent could let you know about a new email or calendar invitation. Or it could check something in the background and tell you what needs attention. That’s the direction, not a feature you can use today.</p>
         </div>
       </div>
     </section>
 
     <ProjectDetailCTA
       label="06 / Internal Conscia use"
-      heading="Bring your next task to Beacon."
-      description="Beacon Work and Beacon Code are available to Conscia colleagues, supported by Beacon Cloud. Open Beacon Cloud at beacon.conscialabs.com to get started."
+      heading="Try Beacon on your next task."
+      description="Work and Code are available to Conscia colleagues, with Cloud supporting both. Open Beacon Cloud at beacon.conscialabs.com to get started."
       actionLabel="Open Beacon Cloud"
       externalHref={beacon.externalHref}
     />

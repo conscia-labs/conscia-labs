@@ -17,7 +17,7 @@ export const focusAreas: FocusArea[] = [
   {
     number: '02',
     name: 'Networking',
-    description: 'Making connected systems faster, simpler, and easier to keep running.',
+    description: 'We work on faster networks that are simpler to run.',
     accent: 'var(--accent-info)',
   },
   {
@@ -29,13 +29,13 @@ export const focusAreas: FocusArea[] = [
   {
     number: '04',
     name: 'Automation',
-    description: 'Turning repeatable work into reliable systems that leave people time for judgment.',
+    description: 'Reliable automation for the repeatable jobs, so people can focus on the decisions.',
     accent: 'var(--highlight-accent)',
   },
   {
     number: '05',
     name: 'Research',
-    description: 'Following good questions through evidence, prototypes, and practice.',
+    description: 'Good questions are worth testing. We build prototypes and see what the evidence says.',
     accent: 'var(--accent-bright)',
   },
 ];

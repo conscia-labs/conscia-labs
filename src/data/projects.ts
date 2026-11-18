@@ -16,7 +16,7 @@ export const projects: Project[] = [
     category: 'Artificial Intelligence',
     type: 'Platform',
     description:
-      'Governed access to approved AI models, with organizational policies, routing, usage limits, cost visibility, and hosted MCP tools such as WebSearch.',
+      'Access approved AI models in one place. Manage who can use them, track usage and cost, and set limits. Hosted MCP tools such as WebSearch sit alongside the model API.',
     href: '/projects/ai-gateway',
     externalHref: 'https://console.ai.conscialabs.com',
     visual: 'gateway',
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     category: 'Artificial Intelligence',
     type: 'Ecosystem',
     description:
-      'Conscia’s internal AI ecosystem for productivity and engineering: Beacon Work on the desktop, Beacon Code in the terminal, and supporting capabilities in Beacon Cloud.',
+      'AI for Conscia colleagues. Beacon Work runs on the desktop, Beacon Code in the terminal. Beacon Cloud supports both.',
     href: '/projects/beacon',
     externalHref: 'https://beacon.conscialabs.com',
     visual: 'beacon',

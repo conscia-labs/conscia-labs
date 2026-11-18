@@ -8,38 +8,38 @@ export type GatewayItem = {
 export const aiGatewayCapabilities: GatewayItem[] = [
   {
     number: '01',
-    title: 'Governed organizational access',
-    description: 'Give applications and people access to approved models through organizational policies and Conscia-issued credentials, without distributing upstream provider keys.',
+    title: 'Access for people and applications',
+    description: 'Decide who can use which models through organizational policies. People and applications use Conscia-issued credentials, not the providers’ keys.',
     accent: 'var(--accent-bright)',
   },
   {
     number: '02',
-    title: 'Model selection and routing',
-    description: 'Request an approved model explicitly or use automatic selection within the organization’s allowed models and routing rules. Availability depends on enabled, qualified routes.',
+    title: 'Choosing a model',
+    description: 'Ask for an approved model, or let Gateway choose one using your organization’s routing rules. The model and route must be enabled and qualified for the request.',
     accent: 'var(--accent-info)',
   },
   {
     number: '03',
-    title: 'Baseline gateway safeguards',
-    description: 'Apply request validation, bounded resource use, tenant and credential isolation, and safe handling of errors and logs. These safeguards are distinct from optional content inspection.',
+    title: 'Checks on every request',
+    description: 'Request checks and resource limits protect the shared gateway. Organizations and credentials are kept separate, with safe handling of errors and logs. This isn’t the same as inspecting content.',
     accent: 'var(--accent-secondary)',
   },
   {
     number: '04',
     title: 'Usage, limits, and cost',
-    description: 'Apply rate limits, quotas, and budgets while attributing model usage and cost to the organization and caller. Usage and audit records make the decisions easier to understand.',
+    description: 'Set rate limits, quotas, and budgets. See which organization and caller used a model, what it cost, and the decisions recorded in usage and audit logs.',
     accent: 'var(--highlight-accent)',
   },
   {
     number: '05',
-    title: 'A practical developer starting point',
-    description: 'Create a key, discover models you can use, test a request in the Sandbox, and use quickstarts to build an integration. Review personal usage and limits in the Developer Portal.',
+    title: 'Get a first request working',
+    description: 'Create a key and find a model you can access. Try it in the Sandbox and follow a quickstart. Your usage and limits are in the Developer Portal, too.',
     accent: 'var(--accent-bright)',
   },
   {
     number: '06',
     title: 'Hosted MCP servers',
-    description: 'Connect MCP-capable clients to hosted tool services such as WebSearch. The Model Context Protocol provides a tool-service interface separate from the model inference API.',
+    description: 'Use tools such as WebSearch from a client that supports the Model Context Protocol (MCP). These hosted services use a separate interface from the model API.',
     accent: 'var(--accent-info)',
   },
 ];
@@ -47,20 +47,20 @@ export const aiGatewayCapabilities: GatewayItem[] = [
 export const aiGatewayDifferentiators: GatewayItem[] = [
   {
     number: 'A',
-    title: 'Access and accountability together',
-    description: 'Bring model access, routing decisions, usage, and cost attribution into one infrastructure layer rather than treating each provider integration separately.',
+    title: 'Know who used which model',
+    description: 'Keep access, routing, usage, and cost records in one place, rather than piece them together across separate provider integrations.',
     accent: 'var(--accent-bright)',
   },
   {
     number: 'B',
-    title: 'Clear administrative boundaries',
-    description: 'Platform administrators manage providers and the catalog. Organization administrators manage access and limits. Developers work with keys, allowed models, and their own usage.',
+    title: 'A view for each role',
+    description: 'Platform admins manage providers and the catalog. Organization admins handle access and limits. Developers get keys, models, and their own usage view.',
     accent: 'var(--accent-secondary)',
   },
   {
     number: 'C',
-    title: 'Infrastructure behind the experience',
-    description: 'Products such as Beacon can use Gateway for governed model access while keeping their own conversations, context, tools, and working experience.',
+    title: 'Built for other products to use',
+    description: 'Beacon and other clients can use Gateway for model access. They provide their own conversations, context, tools, and interface.',
     accent: 'var(--accent-info)',
   },
 ];

@@ -7,7 +7,7 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout
   title="Artificial Intelligence — Conscia Labs"
-  description="Conscia Labs studies agentic systems, AI protocols, and the security controls that make them workable in an organization."
+  description="We study how AI agents use tools, work together, and operate within an organization’s security rules."
   noIndex
 >
   <div class="focus-detail-shell">
@@ -19,8 +19,8 @@ import Layout from '../../layouts/Layout.astro';
           <div class="focus-detail-hero__copy">
             <p class="project-detail-meta">01 <span aria-hidden="true">/</span> Focus area</p>
             <h1 id="focus-detail-title">Artificial Intelligence</h1>
-            <p class="focus-detail-hero__lede">Systems that can act, collaborate, and stay within clear boundaries.</p>
-            <p class="focus-detail-hero__description">We are looking closely at agentic systems: how they reason, use tools, work with other agents, and operate over time. The design challenge is making that work useful while keeping authority and limits visible to the organization.</p>
+            <p class="focus-detail-hero__lede">Agents that can act, without losing track of who’s in charge.</p>
+            <p class="focus-detail-hero__description">We look at how AI agents plan and use tools. That includes how they work together over longer tasks. The hard part is giving them enough freedom to help, without losing control of what they can do.</p>
           </div>
           <div class="agentic-map" aria-label="A conceptual map of an agentic system">
             <div class="agentic-map__orbit agentic-map__orbit--outer"></div>
@@ -42,11 +42,11 @@ import Layout from '../../layouts/Layout.astro';
       <div class="container focus-detail-overview__grid">
         <div>
           <p class="section-label">01 / The challenge</p>
-          <h2 id="focus-question-title">Useful autonomy needs a clear boundary.</h2>
+          <h2 id="focus-question-title">Agents need limits.</h2>
         </div>
         <div class="focus-detail-overview__copy">
-          <p>An agent can plan a task, call tools, coordinate steps, and hand work to another system. Once it does that, authority, identity, data, and accountability become part of the design.</p>
-          <p>We turn those concerns into patterns an organization can use: systems with enough autonomy to help, clear limits on what they can do, and a record of the decisions they make.</p>
+          <p>An agent can plan a task and call tools. It might also hand a step to another system. That raises some basic questions: whose permissions is it using, what data can it see, and who’s responsible for the result?</p>
+          <p>We work on patterns an organization can use: limits on what an agent can do, and a record of what it did.</p>
         </div>
       </div>
     </section>
@@ -56,25 +56,25 @@ import Layout from '../../layouts/Layout.astro';
         <div class="section-intro section-intro--dark">
           <div>
             <p class="section-label">02 / Current threads</p>
-            <h2 id="threads-title">The system around an agent.</h2>
+            <h2 id="threads-title">What we’re looking into.</h2>
           </div>
-          <p>We study the full system around an agent’s action: the agent, the protocols it uses, and the controls that keep its work within the right scope.</p>
+          <p>The agent is only one part of the picture. We also study how systems communicate and how access is controlled.</p>
         </div>
         <div class="focus-detail-thread-grid">
           <article class="focus-detail-thread" style="--item-accent: var(--accent-bright)">
             <span class="focus-detail-thread__number">01</span>
             <h3>Agentic systems</h3>
-            <p>We test how agents plan, keep context, use tools, recover from errors, and coordinate over longer tasks.</p>
+            <p>Can an agent keep track of a long task? We test planning, tool use, coordination, and recovery when something goes wrong.</p>
           </article>
           <article class="focus-detail-thread" style="--item-accent: var(--accent-info)">
             <span class="focus-detail-thread__number">02</span>
             <h3>Protocols and coordination</h3>
-            <p>We study protocols such as A2A and initiatives such as Agntcy, with a focus on discovery, communication, delegation, and clear responsibility.</p>
+            <p>We study A2A and initiatives such as Agntcy. How do agents find each other, pass along a task, and make responsibility clear?</p>
           </article>
           <article class="focus-detail-thread" style="--item-accent: var(--accent-secondary)">
             <span class="focus-detail-thread__number">03</span>
             <h3>Enterprise security</h3>
-            <p>We work through identity, permissions, policy, audit trails, and safe tool access for agents inside an organization.</p>
+            <p>We look at whose identity an agent uses and what it’s allowed to access. Permissions, policies, and audit records need to hold up when an agent calls a tool.</p>
           </article>
         </div>
       </div>
@@ -85,25 +85,25 @@ import Layout from '../../layouts/Layout.astro';
         <div class="section-intro section-intro--light">
           <div>
             <p class="section-label">03 / Guardrails</p>
-            <h2 id="boundaries-title">An agent needs a defined scope.</h2>
+            <h2 id="boundaries-title">Be clear about an agent’s job.</h2>
           </div>
-          <p>The hard part is giving an agent enough room to help while keeping its authority clear.</p>
+          <p>An agent needs room to help, with clear limits on what it can and can’t do.</p>
         </div>
         <div class="boundary-grid">
           <article class="boundary-card">
             <span class="boundary-card__marker">DEFINE</span>
-            <h3>Make authority explicit.</h3>
-            <p>Tie the agent to a person, team, service, or approved workflow so its authority is clear.</p>
+            <h3>Who is it acting for?</h3>
+            <p>Connect the agent to a person, team, service, or approved workflow. Its permissions should have a clear owner.</p>
           </article>
           <article class="boundary-card">
             <span class="boundary-card__marker">OBSERVE</span>
             <h3>Keep a record.</h3>
-            <p>Keep decisions, tool calls, handoffs, and outcomes visible enough to review and learn from.</p>
+            <p>Record decisions, tool calls, handoffs, and results so someone can review what happened.</p>
           </article>
           <article class="boundary-card">
             <span class="boundary-card__marker">CONTAIN</span>
-            <h3>Set the limit.</h3>
-            <p>Set clear limits for data, tools, scope, and escalation when conditions change.</p>
+            <h3>Decide where it has to stop.</h3>
+            <p>Set limits on data, tools, and the task itself. Decide when the agent should stop or ask for help if conditions change.</p>
           </article>
         </div>
       </div>
@@ -113,20 +113,20 @@ import Layout from '../../layouts/Layout.astro';
       <div class="container focus-detail-practice__grid">
         <div>
           <p class="section-label">04 / How we work</p>
-          <h2 id="practice-title">We take ideas into real systems.</h2>
+          <h2 id="practice-title">Put the ideas to the test.</h2>
         </div>
         <div class="focus-detail-practice__steps">
           <div class="practice-step">
             <span>01</span>
-            <p><strong>Study</strong> the capabilities, protocols, and failure modes that shape agentic systems.</p>
+            <p><strong>Study</strong> what agents can do, how they communicate, and where they fail.</p>
           </div>
           <div class="practice-step">
             <span>02</span>
-            <p><strong>Test</strong> ideas against the practical realities of enterprise security, governance, and operations.</p>
+            <p><strong>Test</strong> the ideas against security rules and day-to-day operations.</p>
           </div>
           <div class="practice-step">
             <span>03</span>
-            <p><strong>Build</strong> patterns into prototypes, guidance, and products people can use.</p>
+            <p><strong>Build</strong> prototypes, guidance, and products people can try.</p>
           </div>
         </div>
       </div>
@@ -136,8 +136,8 @@ import Layout from '../../layouts/Layout.astro';
       <div class="container focus-detail-cta__inner">
         <div>
           <p class="section-label">Related project</p>
-          <h2 id="ai-cta-title">A governed route to enterprise AI.</h2>
-          <p>AI Gateway puts these ideas into a product: a secure, multi-tenant route to model access for organizations. It is currently in closed beta.</p>
+          <h2 id="ai-cta-title">Model access through AI Gateway.</h2>
+          <p>AI Gateway manages model access for organizations, with access controls and separate tenants. It’s currently in closed beta.</p>
         </div>
         <a class="button button--outline" href="/projects/ai-gateway">Explore AI Gateway <Arrow /></a>
       </div>

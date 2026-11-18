@@ -2,19 +2,19 @@ export const beaconProducts = [
   {
     number: 'Desktop app',
     title: 'Beacon Work',
-    description: 'A desktop app for productivity and engineering work. Understand information, develop documents and ideas, or work hands-on with files and tools in the context of a task.',
+    description: 'The desktop app for everyday tasks and engineering. Read through information, draft a document, or work with files and tools on a project.',
     accent: 'var(--accent-bright)',
   },
   {
     number: 'Terminal client',
     title: 'Beacon Code',
-    description: 'A terminal coding client for hands-on engineering. Work with repositories, make changes, run commands, and review the results alongside an AI assistant.',
+    description: 'A coding client for the terminal. Use it to explore a repository or make a change, then run commands and check the results.',
     accent: 'var(--accent-secondary)',
   },
   {
     number: 'Shared cloud',
     title: 'Beacon Cloud',
-    description: 'The central capabilities supporting Beacon Work and Beacon Code, including access and administration. Autonomous background work is a future direction, not a current Cloud capability.',
+    description: 'The shared services behind Work and Code, including access and administration. Background agents aren’t built yet. They’re a future direction for Cloud.',
     accent: 'var(--accent-info)',
   },
 ];
@@ -23,19 +23,19 @@ export const beaconCapabilities = [
   {
     number: '01',
     title: 'Institutional knowledge',
-    description: 'Bring Conscia knowledge and relevant working context into a task, so assistance can build on how we work rather than start from a generic answer.',
+    description: 'Use Conscia knowledge and the background you bring to a task. The aim is to give you help that fits how we work, rather than a generic answer.',
     accent: 'var(--accent-bright)',
   },
   {
     number: '02',
     title: 'The Beacon marketplace',
-    description: 'Extend assistance with skills, tools, and connectors suited to the work. Use the capabilities made available to you, with the access and configuration they require.',
+    description: 'Add skills, tools, and connectors that fit the job. What you can use depends on what’s been made available to you and the access and setup it needs.',
     accent: 'var(--accent-info)',
   },
   {
     number: '03',
     title: 'A purpose-built experience',
-    description: 'Choose a desktop or terminal experience built around the task: thinking and writing, working with files and commands, and reviewing what the assistant does.',
+    description: 'Choose the desktop app or terminal client to suit the task. Both let you review what the assistant does, not just read an answer.',
     accent: 'var(--accent-secondary)',
   },
 ];
@@ -44,19 +44,19 @@ export const beaconUseCases = [
   {
     number: 'A',
     title: 'Understand and explain',
-    description: 'Work through a question, read relevant material, or compare approaches. Turn what you learn into an explanation for a colleague or customer.',
+    description: 'Read the material behind a question and compare possible approaches. Then explain what you found to a colleague or customer.',
     accent: 'var(--accent-bright)',
   },
   {
     number: 'B',
     title: 'Develop documents and ideas',
-    description: 'Review a document, shape a proposal, or explore an idea in Beacon Work, with an assistant that can use the context you bring to the task.',
+    description: 'Use Beacon Work to review a document or shape a proposal. Bring the background the assistant needs, and work through the ideas together.',
     accent: 'var(--accent-secondary)',
   },
   {
     number: 'C',
     title: 'Build and review',
-    description: 'Use Beacon Work or Beacon Code to inspect project files, make changes, run checks, and review the results, within the tools and permissions available to you.',
+    description: 'Inspect project files or make a change in Work or Code. Run checks and review the results, using the tools and permissions available to you.',
     accent: 'var(--accent-info)',
   },
 ];
