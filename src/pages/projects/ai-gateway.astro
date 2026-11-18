@@ -9,7 +9,7 @@ import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-g
 
 <Layout
   title="AI Gateway — Conscia Labs"
-  description="AI Gateway gives organizations one controlled route to models from several providers, with security, usage controls, and guided setup. It is currently in closed beta."
+  description="Governed model access for applications and teams, with policies, routing, usage limits, cost visibility, and hosted MCP tools such as WebSearch. AI Gateway is in closed beta."
   noIndex
 >
   <div class="project-page">
@@ -17,7 +17,8 @@ import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-g
       name="AI Gateway"
       category="Artificial Intelligence"
       type="Platform"
-      description="A secure inference gateway for models from AWS Bedrock, OpenAI, Anthropic, Google, and Conscia’s own portfolio, with controls for access and use."
+      description="One governed route to approved AI models for applications, services, scripts, and developer tools, with organizational access controls, usage limits, and cost visibility."
+      lede="Model access with governance built in."
       status="Currently in closed beta. Contact your Conscia representative to learn more."
       externalHref="https://console.ai.conscialabs.com"
     />
@@ -29,22 +30,42 @@ import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-g
           <h2 id="overview-title">One controlled route to model access.</h2>
         </div>
         <div class="detail-overview__copy">
-          <p>AI Gateway sits between your organization and the models your teams use. People can experiment and build in one place, while administrators can see who has access, how the service is used, and where responsibility sits.</p>
-          <p>A team can try a model and reach a working request without starting a new security or integration project for every experiment.</p>
+          <p>AI Gateway sits between callers and their approved AI models. It applies organizational access policies and limits, selects an eligible model and provider route, and records usage, cost, and audit information.</p>
+          <p>OpenAI-style and Anthropic-style APIs let clients integrate with the platform. Supported features and protocol compatibility depend on the enabled model and qualified route; not every provider offers the same capabilities.</p>
+          <p>AWS Bedrock is the supported pilot integration. OpenAI, Anthropic Direct, custom OpenAI-compatible endpoints, GitHub Copilot, and Conscia Sovereign AI Cloud adapters are in Preview. The enabled catalog and route qualification determine what a caller can actually use.</p>
+          <p>Gateway is infrastructure, not an assistant workspace. Products such as Beacon supply the conversations, context, and working experience around model access.</p>
         </div>
       </div>
     </section>
 
-    <CapabilityGrid items={aiGatewayCapabilities} />
+    <CapabilityGrid
+      items={aiGatewayCapabilities}
+      heading="The infrastructure around a model request."
+      introduction="Access, routing, limits, and accountability belong together. Hosted MCP services also provide a separate way for clients to connect to tools such as WebSearch; the inference API does not execute those tools automatically."
+    />
+
+    <section class="detail-overview section-light" aria-labelledby="security-engine-title">
+      <div class="container detail-overview__grid">
+        <div>
+          <p class="section-label">03 / Security Suite — Preview</p>
+          <h2 id="security-engine-title">Security Enforcement Engine.</h2>
+        </div>
+        <div class="detail-overview__copy">
+          <p>The Security Suite’s separate Security Enforcement Engine is a Preview capability, outside the standard release. Where enabled, it can observe admitted chat input in the background without making inference wait for an inspection result.</p>
+          <p>The current preview is observation-only: inspection results do not block requests or change response delivery. Output inspection, enforcement modes, and advanced detection capabilities are not available in this preview.</p>
+          <p>The mandatory gateway safeguards and organizational access policies remain separate from this optional observation service.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="differentiators section-light" aria-labelledby="differentiators-title">
       <div class="container">
         <div class="section-intro section-intro--light">
           <div>
-            <p class="section-label">03 / What sets it apart</p>
-            <h2 id="differentiators-title">Controls that don’t get in the way.</h2>
+            <p class="section-label">04 / What sets it apart</p>
+            <h2 id="differentiators-title">A shared layer, with clear responsibilities.</h2>
           </div>
-          <p>AI Gateway routes model requests and keeps the surrounding context visible: who can use a model, what they use it for, and how much it costs.</p>
+          <p>Developers integrate with model access. Administrators manage the surrounding governance. Downstream products keep ownership of the experience their users work in.</p>
         </div>
         <div class="differentiator-grid">
           {aiGatewayDifferentiators.map((item) => (
@@ -62,10 +83,10 @@ import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-g
       <div class="container">
         <div class="portal-preview__intro">
           <div>
-            <p class="section-label">Developer Portal</p>
-            <h2 id="portal-title">Everything needed for the first request.</h2>
+            <p class="section-label">05 / Developer Portal</p>
+            <h2 id="portal-title">From an allowed model to a first request.</h2>
           </div>
-          <p>Setup, available models, sandbox access, usage, alerts, limits, and quickstarts all live in the Developer Portal.</p>
+          <p>Find models you can access, manage personal keys, try requests in the Sandbox, and follow quickstarts. Usage and limits stay visible alongside the work.</p>
         </div>
         <figure class="portal-preview__figure">
           <img src="/images/ai-gateway/developer-portal.png" alt="AI Gateway Developer Portal showing setup progress, available models, usage, and quickstart actions" loading="lazy" />
@@ -74,7 +95,11 @@ import { aiGatewayCapabilities, aiGatewayDifferentiators } from '../../data/ai-g
       </div>
     </section>
 
-    <ProjectDetailCTA externalHref="https://console.ai.conscialabs.com" />
+    <ProjectDetailCTA
+      label="06 / Closed beta"
+      description="AI Gateway is in closed beta. Feature availability varies by enabled service and qualified model route. Contact your Conscia representative to learn more."
+      externalHref="https://console.ai.conscialabs.com"
+    />
     <Footer />
   </div>
 </Layout>

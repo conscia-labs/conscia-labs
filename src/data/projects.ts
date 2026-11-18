@@ -16,7 +16,7 @@ export const projects: Project[] = [
     category: 'Artificial Intelligence',
     type: 'Platform',
     description:
-      'A multi-tenant AI platform that gives organizations one controlled route to models from several providers, with routing, policy, security, observability, usage, and cost controls.',
+      'Governed access to approved AI models, with organizational policies, routing, usage limits, cost visibility, and hosted MCP tools such as WebSearch.',
     href: '/projects/ai-gateway',
     externalHref: 'https://console.ai.conscialabs.com',
     visual: 'gateway',
